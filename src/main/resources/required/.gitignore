@@ -18,6 +18,8 @@
 target/
 
 # Package Files #
+#adding .jar back in
+!*.jar
 *.war
 *.ear
 *.zip
