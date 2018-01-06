@@ -1,4 +1,4 @@
-package de.hftstuttgart.snarex.main;
+package de.hftstuttgart.snarex.launcher;
 
 import de.hftstuttgart.snarex.view.ZugriffsKlasse;
 import javafx.application.Application;
@@ -12,7 +12,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		Pane mainPane = (Pane) FXMLLoader.load(ZugriffsKlasse.class.getResource(("View.fxml")));
+		Pane mainPane = FXMLLoader.load(ZugriffsKlasse.class.getResource(("View.fxml")));
 		primaryStage.setScene(new Scene(mainPane));
 		primaryStage.setTitle("Snarex");
 		primaryStage.show();

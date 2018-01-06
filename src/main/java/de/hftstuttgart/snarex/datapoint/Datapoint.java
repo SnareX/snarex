@@ -1,4 +1,4 @@
-package Datapoint;
+package de.hftstuttgart.snarex.datapoint;
 
 import javax.xml.crypto.Data;
 import java.util.LinkedList;
@@ -9,7 +9,7 @@ public class Datapoint{
     private double temperature;
     private double pressure;
     private double revolutions;
-    
+
 
     public double getPressure() {
         return pressure;

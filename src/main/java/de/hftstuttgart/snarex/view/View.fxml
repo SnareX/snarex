@@ -19,9 +19,9 @@
 <?import java.lang.String?>
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
-	prefWidth="1141.0" stylesheets="@ViewCss.css" xmlns="http://javafx.com/javafx/8.0.141"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hftstuttgart.snarex.controller.Controller">
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+      prefWidth="1141.0" stylesheets="@ViewCss.css" xmlns="http://javafx.com/javafx/8.0.141"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hftstuttgart.snarex.controller.Controller">
 	<children>
 		<Button fx:id="insert" layoutX="14.0" layoutY="761.0"
 			mnemonicParsing="false" onAction="#insertClick" text="Insert">

@@ -93,7 +93,7 @@ public class Controller {
 	@FXML
 	void deleteClick(ActionEvent event) {
 
-		System.out.println("Daten werden aus der Datenbank gelöscht.");
+		System.out.println("Daten werden aus der Datenbank gelÃ¶scht.");
 
 	}
 
