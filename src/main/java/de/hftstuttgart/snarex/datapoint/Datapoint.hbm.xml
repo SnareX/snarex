@@ -1,4 +1,4 @@
-<class name="Datapoint" table="Aufzeichnungsdaten">
+<class name="de.hftstuttgart.snarex.datapoint.Datapoint" table="Aufzeichnungsdaten">
 
 </class>
 
