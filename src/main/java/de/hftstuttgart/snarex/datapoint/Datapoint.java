@@ -9,9 +9,18 @@ public class Datapoint{
     private double temperature;
     private double pressure;
     private double revolutions;
+    
+    public Datapoint() {};
+    
+
+    public Datapoint(double temperature, double pressure, double revolutions) {
+		this.temperature = temperature;
+		this.pressure = pressure;
+		this.revolutions = revolutions;
+	}
 
 
-    public double getPressure() {
+	public double getPressure() {
         return pressure;
     }
 
