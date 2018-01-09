@@ -4,44 +4,40 @@ import javax.xml.crypto.Data;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Datapoint{
+public class Datapoint {
 
-    private double temperature;
-    private double pressure;
-    private double revolutions;
-    
-    public Datapoint() {};
-    
+	private double temperature;
+	private double pressure;
+	private double revolutions;
 
-    public Datapoint(double temperature, double pressure, double revolutions) {
+	public Datapoint(double temperature, double pressure, double revolutions) { // ???
 		this.temperature = temperature;
 		this.pressure = pressure;
 		this.revolutions = revolutions;
 	}
 
-
 	public double getPressure() {
-        return pressure;
-    }
+		return pressure;
+	}
 
-    public void setPressure(double pressure) {
-        this.pressure = pressure;
-    }
+	public void setPressure(double pressure) {
+		this.pressure = pressure;
+	}
 
-    public double getRevolutions() {
-        return revolutions;
-    }
+	public double getRevolutions() {
+		return revolutions;
+	}
 
-    public void setRevolutions(double revolutions) {
-        this.revolutions = revolutions;
-    }
+	public void setRevolutions(double revolutions) {
+		this.revolutions = revolutions;
+	}
 
-    public double getTemperature() {
+	public double getTemperature() {
 
-        return temperature;
-    }
+		return temperature;
+	}
 
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
-    }
+	public void setTemperature(double temperature) {
+		this.temperature = temperature;
+	}
 }
