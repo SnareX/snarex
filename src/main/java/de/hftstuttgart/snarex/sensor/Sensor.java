@@ -3,6 +3,7 @@ package de.hftstuttgart.snarex.sensor;
 import de.hft.wiinf.cebarround.CeBarRoundDataSensorV2;
 import de.hft.wiinf.cebarround.CeBarRoundObserver;
 import de.hft.wiinf.cebarround.SensorEvent;
+import de.hftstuttgart.snarex.datapoint.Datapoint;
 
 /**
  * Wrapper class around de.hft.wiinf.cebarround.CeBarRoundDataSensorV2;
@@ -25,8 +26,10 @@ public class Sensor{
         cebarsensor.addListener(new CeBarRoundObserver<SensorEvent>() {
 
             @Override
-            public void sensorDataEventListener(SensorEvent arg0) {
-                System.out.println("Revolutions: " + arg0.getRevolutions());
+            public void sensorDataEventListener(SensorEvent sEvent) {
+                Datapoint dp = new Datapoint(sEvent);
+                //deliver to Database / Database queue
+                //deliver to Plot in view
             }
 
 
