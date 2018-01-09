@@ -1,9 +1,7 @@
 package de.hftstuttgart.snarex.model;
 
-import de.hft.wiinf.cebarround.*;
-import de.hftstuttgart.snarex.sensor.Sensor;
-
 import java.util.Vector;
+import de.hftstuttgart.snarex.sensor.Sensor;
 
 public class Model {
 
@@ -33,24 +31,29 @@ public class Model {
 	public void read() {
 
 	}
-	
 
 	public void delete() {
 
 	}
 
-	public void createTable() {
+	public void connect() {
 
 	}
 
-
-
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		Model model1 = new Model();
 		model1.addSensor();
 
 		model1.connectToSensor(0);
 		//model1.closeSensorConnection(0);
+
+	}
+	public void createTable() {
+
+	}
+
+	public void close() {
+
 	}
 
 }

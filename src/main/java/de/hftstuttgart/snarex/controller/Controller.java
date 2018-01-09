@@ -2,128 +2,154 @@ package de.hftstuttgart.snarex.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.MenuBar;
 
 public class Controller {
 
-	@FXML
-	private Pane pane;
+    @FXML
+    private Label sensorSelectionLbl;
 
-	@FXML
-	private Button btnCompare;
+    @FXML
+    private Label dataBaseLbl;
 
-	@FXML
-	private Button insert;
+    @FXML
+    private ComboBox<?> databaseComboBox;
 
-	@FXML
-	private Button read;
+    @FXML
+    private ComboBox<?> sensorComboBox;
 
-	@FXML
-	private Button delete;
+    @FXML
+    private Label alertsLbl;
 
-	@FXML
-	private BarChart<?, ?> barChart;
+    @FXML
+    private ComboBox<?> alertComboBox;
 
-	@FXML
-	private CheckBox cbTemperature;
+    @FXML
+    private Label measuringLbl;
 
-	@FXML
-	private CheckBox cbRotations;
+    @FXML
+    private Button startMeasuringBtn;
 
-	@FXML
-	private CheckBox cbPressure;
+    @FXML
+    private Button stopMeasuringBtn;
 
-	@FXML
-	private Label lblSensor_1;
+    @FXML
+    private Label recordLbl;
 
-	@FXML
-	private Label lblDataBase;
+    @FXML
+    private Button startRecordBtn;
 
-	@FXML
-	private Label lblActiveAlerts;
+    @FXML
+    private Button stopRecordBtn;
 
-	@FXML
-	private Label lblSensor;
+    @FXML
+    private Button showRecordedBtn;
 
-	@FXML
-	private Label lblSensorName;
+    @FXML
+    private ColorPicker tempColorPicker;
 
-	@FXML
-	private Label lblTimePeriod;
+    @FXML
+    private ColorPicker pressColorPicker;
 
-	@FXML
-	private Spinner<?> timePeriodSet;
+    @FXML
+    private ColorPicker rotColorPicker;
 
-	@FXML
-	private ColorPicker temperatureColor;
+    @FXML
+    private Label tempColorLbl;
 
-	@FXML
-	private ColorPicker rotationsColor;
+    @FXML
+    private Label pressColorLbl;
 
-	@FXML
-	private ColorPicker pressureColor;
+    @FXML
+    private Label rotColorLbl;
 
-	@FXML
-	private ComboBox<?> graphType;
+    @FXML
+    private ComboBox<?> inputTypeComboBox;
 
-	@FXML
-	private ComboBox<?> inputType;
+    @FXML
+    private ComboBox<?> barTypeComboBox;
 
-	@FXML
-	private ComboBox<?> sensorChoice;
+    @FXML
+    private ComboBox<?> inputInComboBox;
 
-	@FXML
-	private ComboBox<?> databaseChoice;
+    @FXML
+    private Button compareBtn;
 
-	@FXML
-	private ComboBox<?> alertChoice;
+    @FXML
+    private MenuBar menuBar;
 
-	@FXML
-	void compareClick(ActionEvent event) {
+    @FXML
+    private LineChart<?, ?> pressureChart;
 
-	}
+    @FXML
+    private LineChart<?, ?> temperatureChart;
 
-	@FXML
-	void deleteClick(ActionEvent event) {
+    @FXML
+    private LineChart<?, ?> rotationsChart;
 
-		System.out.println("Daten werden aus der Datenbank geloescht.");
+    @FXML
+    void compareClick(ActionEvent event) {
 
-	}
+    }
 
-	@FXML
-	void insertClick(ActionEvent event) {
+    @FXML
+    void selectAlertsSelect(ActionEvent event) {
 
-		System.out.println("Werte werden in die Datenbank geschrieben.");
+    }
 
-	}
+    @FXML
+    void selectBarTypeSelect(ActionEvent event) {
 
-	@FXML
-	void readClick(ActionEvent event) {
+    }
 
-		System.out.println("Dateien werden aus der Datenbank ausgelesen");
+    @FXML
+    void selectDatabaseSelect(ActionEvent event) {
 
-	}
+    }
 
-	@FXML
-	void rotationsClick(ActionEvent event) {
+    @FXML
+    void selectInputTypeSelect(ActionEvent event) {
 
-	}
+    }
 
-	@FXML
-	void temperatureClick(ActionEvent event) {
+    @FXML
+    void selectSensorSelect(ActionEvent event) {
 
-	}
+    }
 
-	@FXML
-	void pressureClick(ActionEvent event) {
+    @FXML
+    void showInputInSelect(ActionEvent event) {
 
-	}
+    }
+
+    @FXML
+    void showRecordedClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void startMeasureClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void startRecordClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void stopMeasureClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void stopRecordClick(ActionEvent event) {
+
+    }
 
 }
