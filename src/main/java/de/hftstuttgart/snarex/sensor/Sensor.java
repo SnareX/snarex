@@ -4,6 +4,7 @@ import de.hft.wiinf.cebarround.CeBarRoundDataSensorV2;
 import de.hft.wiinf.cebarround.CeBarRoundObserver;
 import de.hft.wiinf.cebarround.SensorEvent;
 import de.hftstuttgart.snarex.datapoint.Datapoint;
+import de.hftstuttgart.snarex.model.Model;
 
 /**
  * Wrapper class around de.hft.wiinf.cebarround.CeBarRoundDataSensorV2;
@@ -28,12 +29,16 @@ public class Sensor{
             @Override
             public void sensorDataEventListener(SensorEvent sEvent) {
                 Datapoint dp = new Datapoint(sEvent);
+
+                synchronized (Model.dpQueue) {
+                    if (!Model.dpQueue.offer(dp)) {
+                        Model.dpQueue.offer(dp);
+                    }
+                    Model.dpQueue.notify();
+                    }
+                }
                 //deliver to Database / Database queue
                 //deliver to Plot in view
-            }
-
-
-
         });
         cebarsensor.startMeasure();
     }

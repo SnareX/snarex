@@ -1,6 +1,10 @@
 package de.hftstuttgart.snarex.model;
 
 import java.util.Vector;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
+
+import de.hftstuttgart.snarex.datapoint.Datapoint;
 import de.hftstuttgart.snarex.sensor.Sensor;
 
 public class Model {
@@ -9,6 +13,7 @@ public class Model {
      * Vector containing all Sensor Objects
      */
     public Vector<Sensor> sensorVector = new Vector<>();
+    public static BlockingQueue<Datapoint> dpQueue = new LinkedBlockingDeque<Datapoint>();
 
 	public void addSensor(){
 	    sensorVector.add(new Sensor());
