@@ -11,22 +11,36 @@ import de.hft.wiinf.cebarround.SensorEvent;
 public class Sensor{
 
     CeBarRoundDataSensorV2 cebarsensor = new CeBarRoundDataSensorV2();
+
+    /**
+     * basic constructor
+     */
     public Sensor(){
-        //doStuff
+
     }
     public void connect(){
+        /**
+         * adds Listener and handles SensorEvents
+         */
         cebarsensor.addListener(new CeBarRoundObserver<SensorEvent>() {
 
             @Override
             public void sensorDataEventListener(SensorEvent arg0) {
                 System.out.println("Revolutions: " + arg0.getRevolutions());
-
             }
+
+
 
         });
         cebarsensor.startMeasure();
     }
+
+
+    /**
+     * closes connection and deletes all Listeners
+     */
     public void close(){
+
         cebarsensor.stopMeasure();
     }
 }
