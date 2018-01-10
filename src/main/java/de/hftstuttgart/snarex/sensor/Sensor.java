@@ -34,6 +34,7 @@ public class Sensor {
 						Model.dpQueue.offer(dp);
 					}
 					Model.dpQueue.notify();
+
 				}
 			}
 			//deliver to Database / Database queue

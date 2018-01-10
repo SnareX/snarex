@@ -5,6 +5,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 import de.hftstuttgart.snarex.datapoint.Datapoint;
+import de.hftstuttgart.snarex.datapoint.DpConsumer;
 import de.hftstuttgart.snarex.sensor.Sensor;
 
 public class Model {
@@ -43,30 +44,39 @@ public class Model {
 
 	}
 
-	public void insert() {
-
-	}
-
-	public void read() {
-
-	}
-
-	public void delete() {
-
-	}
-
-	public void connect() {
-
-	}
 
 	public static void main(String[] args) {
 		Model model1 = new Model();
 		model1.addSensor();
 
+        DpConsumer dpc = new DpConsumer();
+        try{
+            dpc.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 		model1.connectToSensor(0);
-		// model1.closeSensorConnection(0);
+
+        // model1.closeSensorConnection(0);
 
 	}
+
+    public void insert() {
+
+    }
+
+    public void read() {
+
+    }
+
+    public void delete() {
+
+    }
+
+    public void connect() {
+
+    }
 
 	public void createTable() {
 
