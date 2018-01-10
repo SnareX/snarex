@@ -15,15 +15,29 @@ public class Model {
     public Vector<Sensor> sensorVector = new Vector<>();
     public static BlockingQueue<Datapoint> dpQueue = new LinkedBlockingDeque<Datapoint>();
 
-	public void addSensor(){
-	    sensorVector.add(new Sensor());
-    }
+	/**
+	 * adds a new Sensor to sensorVector;
+	 */
+	public void addSensor() {
+		sensorVector.add(new Sensor());
+	}
 
-    public void connectToSensor(int index){
+	/**
+	 * connects to selected Sensor
+	 * @param index the number of the element in Vector;
+     *
+	 */
 
-	    sensorVector.elementAt(index).connect();
-    }
+	public void connectToSensor(int index) {
+		sensorVector.elementAt(index).connect();
+	}
 
+	/**
+	 * disconnects to selected Sensor;
+	 * 
+	 * @param index the number of the element in Vector
+     *
+	 */
 	public void closeSensorConnection(int index) {
 		sensorVector.elementAt(index).close();
 
@@ -50,9 +64,10 @@ public class Model {
 		model1.addSensor();
 
 		model1.connectToSensor(0);
-		//model1.closeSensorConnection(0);
+		// model1.closeSensorConnection(0);
 
 	}
+
 	public void createTable() {
 
 	}
