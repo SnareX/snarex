@@ -30,10 +30,10 @@ public class Datapoint {
         temperature = sEvent.getTemperature();
         pressure = sEvent.getPressure();
         revolutions = sEvent.getRevolutions();
-        sekunden = String.valueOf(sEvent.getDate().getSeconds());
+        sekunden = sEvent.getDate().toString();
     }
 
-	public Datapoint(double temperature, double pressure, double revolutions, Date sekunden) { // ???
+	public Datapoint(double temperature, double pressure, double revolutions, String sekunden) { // ???
 		this.temperature = temperature;
 		this.pressure = pressure;
 		this.revolutions = revolutions;
@@ -41,11 +41,12 @@ public class Datapoint {
 	}
 
 	
-	public Date getSekunden() {
+
+	public String getSekunden() {
 		return sekunden;
 	}
 
-	public void setSekunden(Date sekunden) {
+	public void setSekunden(String sekunden) {
 		this.sekunden = sekunden;
 	}
 

@@ -15,7 +15,7 @@ public class Launcher extends Application {
 		@Override
 		public void start(Stage primaryStage) throws Exception {
 
-			BorderPane outerPane = (BorderPane) FXMLLoader.load(ClassLoader.getSystemResource("de/hftstuttgart/snarex/view/View.fxml")); 
+			BorderPane outerPane = (BorderPane) FXMLLoader.load(ClassLoader.getSystemResource("de/hftstuttgart/snarex/view/View5.fxml")); 
 			primaryStage.setScene(new Scene(outerPane));
 			primaryStage.setTitle("Snarex");
 			primaryStage.show();

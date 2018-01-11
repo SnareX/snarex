@@ -1,11 +1,9 @@
 package de.hftstuttgart.snarex.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import de.hftstuttgart.snarex.datapoint.Datapoint;
+import de.hftstuttgart.snarex.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
@@ -16,7 +14,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
-public class Controller implements Initializable {
+public class Controller{
 
     @FXML
     private Label sensorSelectionLbl;
@@ -53,7 +51,7 @@ public class Controller implements Initializable {
     
     @FXML
     private ComboBox<?> inputTypeComboBox;
-
+    
     @FXML
     private ComboBox<?> barTypeComboBox;
 
@@ -192,6 +190,10 @@ public class Controller implements Initializable {
 
     @FXML
     void startMeasureClick(ActionEvent event) {
+    	Model model = new Model();
+    	model.addSensor();
+    	model.connectToSensor(0);
+    	graphPlotter(new Datapoint());
 
     }
 
@@ -210,24 +212,18 @@ public class Controller implements Initializable {
 
     }
  
-public void graphPlotter (String valueNumber, double pressure, double revolutions, double temperature) {
-	XYChart.Series series = new XYChart.Series();
-	XYChart.Series series_1 = new XYChart.Series();
-	XYChart.Series series_2 = new XYChart.Series();
-	series_1.getData().add(new XYChart.Data<>(valueNumber, pressure));
-	series_2.getData().add(new XYChart.Data<>(valueNumber, revolutions));
-	series.getData().add(new XYChart.Data<>(valueNumber, temperature));
-	
-}
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-	XYChart.Series series = new XYChart.Series();
-	series.getData().add(new XYChart.Data<>("1", 23));
-	series.getData().add(new XYChart.Data<>("23", 120));
-	series.getData().add(new XYChart.Data<>("55", 100));
-	pressureChart.getData().addAll(series);
-	
-		
+    public void graphPlotter (Datapoint datapoint) {
+		XYChart.Series series = new XYChart.Series();
+		XYChart.Series series_1 = new XYChart.Series();
+		XYChart.Series series_2 = new XYChart.Series();
+		series_1.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getPressure()));
+		series_2.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getRevolutions()));
+		series.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getTemperature()));
+		pressureChart.getData().addAll(series_1);
+		temperatureChart.getData().addAll(series);
+		rotationsChart.getData().addAll(series_2);
 	}
+
+	
 
 }

@@ -109,7 +109,7 @@
 					</children>
 				</GridPane>
 				<Button fx:id="showRecordedBtn" mnemonicParsing="false"
-					onAction="#showRecordedClick" text="Show recorded measurements"
+					onAction="#showRecordedClick" text="Measurements"
 					GridPane.columnIndex="1" GridPane.rowIndex="7" />
 				<TreeView fx:id="treeTree" prefHeight="200.0" prefWidth="200.0"
 					GridPane.columnIndex="1" GridPane.rowIndex="1">
