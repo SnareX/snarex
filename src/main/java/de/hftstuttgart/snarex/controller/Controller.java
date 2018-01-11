@@ -209,11 +209,22 @@ public class Controller implements Initializable {
     void stopRecordClick(ActionEvent event) {
 
     }
-
+ 
+public void graphPlotter (String valueNumber, double pressure, double revolutions, double temperature) {
+	XYChart.Series series = new XYChart.Series();
+	XYChart.Series series_1 = new XYChart.Series();
+	XYChart.Series series_2 = new XYChart.Series();
+	series_1.getData().add(new XYChart.Data<>(valueNumber, pressure));
+	series_2.getData().add(new XYChart.Data<>(valueNumber, revolutions));
+	series.getData().add(new XYChart.Data<>(valueNumber, temperature));
+	
+}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 	XYChart.Series series = new XYChart.Series();
 	series.getData().add(new XYChart.Data<>("1", 23));
+	series.getData().add(new XYChart.Data<>("23", 120));
+	series.getData().add(new XYChart.Data<>("55", 100));
 	pressureChart.getData().addAll(series);
 	
 		

@@ -289,7 +289,7 @@
 	<center>
 		<VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
 			<children>
-				<LineChart fx:id="pressureChart" title="Pressure">
+				<LineChart fx:id="pressureChart" title="Pressure [Bar]">
 					<xAxis>
 						<CategoryAxis side="BOTTOM" />
 					</xAxis>
@@ -297,7 +297,7 @@
 						<NumberAxis side="LEFT" />
 					</yAxis>
 				</LineChart>
-				<LineChart fx:id="temperatureChart" title="Temperature">
+				<LineChart fx:id="temperatureChart" title="Temperature [°C]">
 					<xAxis>
 						<CategoryAxis side="BOTTOM" />
 					</xAxis>
@@ -305,7 +305,7 @@
 						<NumberAxis side="LEFT" />
 					</yAxis>
 				</LineChart>
-				<LineChart fx:id="rotationsChart" title="Revolutions">
+				<LineChart fx:id="rotationsChart" title="Revolutions[rpm]">
 					<xAxis>
 						<CategoryAxis side="BOTTOM" />
 					</xAxis>
