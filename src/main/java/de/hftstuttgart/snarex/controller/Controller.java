@@ -1,45 +1,70 @@
 package de.hftstuttgart.snarex.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 
-public class Controller {
+public class Controller implements Initializable {
 
     @FXML
     private Label sensorSelectionLbl;
 
     @FXML
     private Label dataBaseLbl;
+    
+    @FXML
+    private Label alertsLbl;
+    
+    @FXML
+    private Label measuringLbl;
+    
+    @FXML
+    private Label recordLbl;
+    
+    @FXML
+    private Label tempColorLbl;
+
+    @FXML
+    private Label pressColorLbl;
+
+    @FXML
+    private Label rotColorLbl;
 
     @FXML
     private ComboBox<?> databaseComboBox;
 
     @FXML
     private ComboBox<?> sensorComboBox;
-
-    @FXML
-    private Label alertsLbl;
-
+    
     @FXML
     private ComboBox<?> alertComboBox;
+    
+    @FXML
+    private ComboBox<?> inputTypeComboBox;
 
     @FXML
-    private Label measuringLbl;
+    private ComboBox<?> barTypeComboBox;
+
+    @FXML
+    private ComboBox<?> inputInComboBox;
 
     @FXML
     private Button startMeasuringBtn;
 
     @FXML
     private Button stopMeasuringBtn;
-
-    @FXML
-    private Label recordLbl;
 
     @FXML
     private Button startRecordBtn;
@@ -49,6 +74,9 @@ public class Controller {
 
     @FXML
     private Button showRecordedBtn;
+    
+    @FXML
+    private Button compareBtn;
 
     @FXML
     private ColorPicker tempColorPicker;
@@ -60,28 +88,58 @@ public class Controller {
     private ColorPicker rotColorPicker;
 
     @FXML
-    private Label tempColorLbl;
-
-    @FXML
-    private Label pressColorLbl;
-
-    @FXML
-    private Label rotColorLbl;
-
-    @FXML
-    private ComboBox<?> inputTypeComboBox;
-
-    @FXML
-    private ComboBox<?> barTypeComboBox;
-
-    @FXML
-    private ComboBox<?> inputInComboBox;
-
-    @FXML
-    private Button compareBtn;
-
-    @FXML
     private MenuBar menuBar;
+    
+    @FXML
+    private TreeView<?> treeTree;
+
+    @FXML
+    private TreeItem<?> rootTree;
+
+    @FXML
+    private TreeItem<?> sensorTree;
+
+    @FXML
+    private TreeItem<?> sensor_01;
+
+    @FXML
+    private TreeItem<?> sensor_02;
+
+    @FXML
+    private TreeItem<?> dataTree;
+
+    @FXML
+    private TreeItem<?> databaseTree;
+
+    @FXML
+    private TreeItem<?> alertTree;
+
+    @FXML
+    private TreeItem<?> pressureAlTree;
+
+    @FXML
+    private TreeItem<?> pressurexAlTree;
+
+    @FXML
+    private TreeItem<?> pressureyAlTree;
+
+    @FXML
+    private TreeItem<?> tempAlTree;
+
+    @FXML
+    private TreeItem<?> tempxAlTree;
+
+    @FXML
+    private TreeItem<?> tempyAlTree;
+
+    @FXML
+    private TreeItem<?> revAlTree;
+
+    @FXML
+    private TreeItem<?> revxAlTree;
+
+    @FXML
+    private TreeItem<?> revyAlTree;
 
     @FXML
     private LineChart<?, ?> pressureChart;
@@ -151,5 +209,14 @@ public class Controller {
     void stopRecordClick(ActionEvent event) {
 
     }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+	XYChart.Series series = new XYChart.Series();
+	series.getData().add(new XYChart.Data<>("1", 23));
+	pressureChart.getData().addAll(series);
+	
+		
+	}
 
 }
