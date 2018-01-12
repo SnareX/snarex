@@ -116,13 +116,13 @@ public class Controller {
 	private MenuItem databaseDelete;
 
     @FXML
-    public static LineChart<?, ?> pressureChart;
+    private LineChart<?, ?> pressureChart;
 
     @FXML
-    public static LineChart<?, ?> temperatureChart;
+    private LineChart<?, ?> temperatureChart;
 
     @FXML
-    public static LineChart<?, ?> rotationsChart;
+    private LineChart<?, ?> rotationsChart;
 
 	@FXML
 	private MenuItem alertAdd;
@@ -285,9 +285,14 @@ public class Controller {
 		series_1.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getPressure()));
 		series_2.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getRevolutions()));
 		series.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getTemperature()));
-		pressureChart.getData().addAll(series_1);
 		temperatureChart.getData().addAll(series);
+		pressureChart.getData().addAll(series_1);
 		rotationsChart.getData().addAll(series_2);
+	}
+	public void finalPlotter(XYChart.Series[] seriesArr){
+		temperatureChart.getData().addAll(seriesArr[0]);
+		pressureChart.getData().addAll(seriesArr[1]);
+		rotationsChart.getData().addAll(seriesArr[2]);
 	}
 
 	

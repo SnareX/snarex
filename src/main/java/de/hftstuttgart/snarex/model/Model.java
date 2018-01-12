@@ -11,8 +11,6 @@ import de.hftstuttgart.snarex.sensor.Sensor;
 import static java.lang.Thread.sleep;
 
 public class Model {
-	public static final boolean DEBUG = true;
-
     /**
      * Vector containing all Sensor Objects
      */
@@ -61,13 +59,7 @@ public class Model {
 		System.out.println("connecting to sensor...");
 		model1.connectToSensor(0);
 
-		try {
-			System.out.println("sleep");
-			sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		dpc.interrupt();
+
         // model1.closeSensorConnection(0);
 
 	}
