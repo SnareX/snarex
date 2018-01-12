@@ -2,45 +2,55 @@ package de.hftstuttgart.snarex.datapoint;
 
 import de.hft.wiinf.cebarround.SensorEvent;
 
-import javax.xml.crypto.Data;
-
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Datapoint {
 
-    private double temperature;
-    private double pressure;
-    private double revolutions;
-    private String sekunden;
-    private int date;
-    
-    public Datapoint() {
-        temperature = 0;
-        pressure = 0;
-        revolutions = 0;
-        sekunden = null;
-    };
+	private int id;
+	private double temperature;
+	private double pressure;
+	private double revolutions;
+	private String sekunden;
+	private LocalDateTime date;
 
-    public Datapoint(SensorEvent sEvent){
+	static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-        temperature = sEvent.getTemperature();
-        pressure = sEvent.getPressure();
-        revolutions = sEvent.getRevolutions();
-        sekunden = sEvent.getDate().toString();
-    }
+	public Datapoint() {
+	};
 
-	public Datapoint(double temperature, double pressure, double revolutions, String sekunden) { // ???
+	public Datapoint(SensorEvent sEvent) {
+		this.date = LocalDateTime.now();
+		this.temperature = sEvent.getTemperature();
+		this.pressure = sEvent.getPressure();
+		this.revolutions = sEvent.getRevolutions();
+		this.sekunden = date.format(formatter);
+	}
+
+	public Datapoint(double temperature, double pressure, double revolutions) { // ???
 		this.temperature = temperature;
 		this.pressure = pressure;
 		this.revolutions = revolutions;
-		this.sekunden = sekunden;
+		this.date = LocalDateTime.now();
+		this.sekunden = date.format(formatter);
+
 	}
 
-	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
 
 	public String getSekunden() {
 		return sekunden;
