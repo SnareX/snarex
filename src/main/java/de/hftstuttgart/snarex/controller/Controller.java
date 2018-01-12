@@ -1,7 +1,6 @@
 package de.hftstuttgart.snarex.controller;
 
 import de.hftstuttgart.snarex.datapoint.Datapoint;
-import de.hftstuttgart.snarex.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
@@ -9,208 +8,268 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
-public class Controller{
+public class Controller {
 
-    @FXML
-    private Label sensorSelectionLbl;
+	@FXML
+	private Label sensorSelectionLbl;
 
-    @FXML
-    private Label dataBaseLbl;
-    
-    @FXML
-    private Label alertsLbl;
-    
-    @FXML
-    private Label measuringLbl;
-    
-    @FXML
-    private Label recordLbl;
-    
-    @FXML
-    private Label tempColorLbl;
+	@FXML
+	private Label dataBaseLbl;
 
-    @FXML
-    private Label pressColorLbl;
+	@FXML
+	private Label alertsLbl;
 
-    @FXML
-    private Label rotColorLbl;
+	@FXML
+	private Label measuringLbl;
 
-    @FXML
-    private ComboBox<?> databaseComboBox;
+	@FXML
+	private Label recordLbl;
 
-    @FXML
-    private ComboBox<?> sensorComboBox;
-    
-    @FXML
-    private ComboBox<?> alertComboBox;
-    
-    @FXML
-    private ComboBox<?> inputTypeComboBox;
-    
-    @FXML
-    private ComboBox<?> barTypeComboBox;
+	@FXML
+	private Label tempColorLbl;
 
-    @FXML
-    private ComboBox<?> inputInComboBox;
+	@FXML
+	private Label pressColorLbl;
 
-    @FXML
-    private Button startMeasuringBtn;
+	@FXML
+	private Label rotColorLbl;
 
-    @FXML
-    private Button stopMeasuringBtn;
+	@FXML
+	private ComboBox<?> databaseComboBox;
 
-    @FXML
-    private Button startRecordBtn;
+	@FXML
+	private ComboBox<?> sensorComboBox;
 
-    @FXML
-    private Button stopRecordBtn;
+	@FXML
+	private ComboBox<?> alertComboBox;
 
-    @FXML
-    private Button showRecordedBtn;
-    
-    @FXML
-    private Button compareBtn;
+	@FXML
+	private ComboBox<?> inputTypeComboBox;
 
-    @FXML
-    private ColorPicker tempColorPicker;
+	@FXML
+	private ComboBox<?> barTypeComboBox;
 
-    @FXML
-    private ColorPicker pressColorPicker;
+	@FXML
+	private ComboBox<?> inputInComboBox;
 
-    @FXML
-    private ColorPicker rotColorPicker;
+	@FXML
+	private Button startMeasuringBtn;
 
-    @FXML
-    private MenuBar menuBar;
-    
-    @FXML
-    private TreeView<?> treeTree;
+	@FXML
+	private Button stopMeasuringBtn;
 
-    @FXML
-    private TreeItem<?> rootTree;
+	@FXML
+	private Button startRecordBtn;
 
-    @FXML
-    private TreeItem<?> sensorTree;
+	@FXML
+	private Button stopRecordBtn;
 
-    @FXML
-    private TreeItem<?> sensor_01;
+	@FXML
+	private Button showRecordedBtn;
 
-    @FXML
-    private TreeItem<?> sensor_02;
+	@FXML
+	private Button compareBtn;
 
-    @FXML
-    private TreeItem<?> dataTree;
+	@FXML
+	private ColorPicker tempColorPicker;
 
-    @FXML
-    private TreeItem<?> databaseTree;
+	@FXML
+	private ColorPicker pressColorPicker;
 
-    @FXML
-    private TreeItem<?> alertTree;
+	@FXML
+	private ColorPicker rotColorPicker;
 
-    @FXML
-    private TreeItem<?> pressureAlTree;
+	@FXML
+	private MenuBar menuBar;
 
-    @FXML
-    private TreeItem<?> pressurexAlTree;
+	@FXML
+	private ContextMenu contextMenu;
 
-    @FXML
-    private TreeItem<?> pressureyAlTree;
+	@FXML
+	private Menu menuSensor;
 
-    @FXML
-    private TreeItem<?> tempAlTree;
+	@FXML
+	private Menu menuDatabase;
 
-    @FXML
-    private TreeItem<?> tempxAlTree;
+	@FXML
+	private Menu menuAlert;
 
-    @FXML
-    private TreeItem<?> tempyAlTree;
+	@FXML
+	private MenuItem sensorAdd;
 
-    @FXML
-    private TreeItem<?> revAlTree;
+	@FXML
+	private MenuItem sensorDelete;
 
-    @FXML
-    private TreeItem<?> revxAlTree;
+	@FXML
+	private MenuItem databaseAdd;
 
-    @FXML
-    private TreeItem<?> revyAlTree;
+	@FXML
+	private MenuItem databaseDelete;
 
-    @FXML
-    private LineChart<?, ?> pressureChart;
+	@FXML
+	private MenuItem alertAdd;
 
-    @FXML
-    private LineChart<?, ?> temperatureChart;
+	@FXML
+	private MenuItem alertDelete;
 
-    @FXML
-    private LineChart<?, ?> rotationsChart;
+	@FXML
+	private TreeView<?> treeTree;
 
-    @FXML
-    void compareClick(ActionEvent event) {
+	@FXML
+	private TreeItem<?> rootTree;
 
-    }
+	@FXML
+	private TreeItem<?> sensorTree;
 
-    @FXML
-    void selectAlertsSelect(ActionEvent event) {
+	@FXML
+	private TreeItem<?> sensor_01;
 
-    }
+	@FXML
+	private TreeItem<?> sensor_02;
 
-    @FXML
-    void selectBarTypeSelect(ActionEvent event) {
+	@FXML
+	private TreeItem<?> dataTree;
 
-    }
+	@FXML
+	private TreeItem<?> databaseTree;
 
-    @FXML
-    void selectDatabaseSelect(ActionEvent event) {
+	@FXML
+	private TreeItem<?> alertTree;
 
-    }
+	@FXML
+	private TreeItem<?> pressureAlTree;
 
-    @FXML
-    void selectInputTypeSelect(ActionEvent event) {
+	@FXML
+	private TreeItem<?> pressurexAlTree;
 
-    }
+	@FXML
+	private TreeItem<?> pressureyAlTree;
 
-    @FXML
-    void selectSensorSelect(ActionEvent event) {
+	@FXML
+	private TreeItem<?> tempAlTree;
 
-    }
+	@FXML
+	private TreeItem<?> tempxAlTree;
 
-    @FXML
-    void showInputInSelect(ActionEvent event) {
+	@FXML
+	private TreeItem<?> tempyAlTree;
 
-    }
+	@FXML
+	private TreeItem<?> revAlTree;
 
-    @FXML
-    void showRecordedClick(ActionEvent event) {
+	@FXML
+	private TreeItem<?> revxAlTree;
 
-    }
+	@FXML
+	private TreeItem<?> revyAlTree;
 
-    @FXML
-    void startMeasureClick(ActionEvent event) {
-    	Model model = new Model();
-    	model.addSensor();
-    	model.connectToSensor(0);
-    	graphPlotter(new Datapoint());
+	@FXML
+	private LineChart<?, ?> pressureChart;
 
-    }
+	@FXML
+	private LineChart<?, ?> temperatureChart;
 
-    @FXML
-    void startRecordClick(ActionEvent event) {
+	@FXML
+	private LineChart<?, ?> rotationsChart;
 
-    }
+	@FXML
+	void compareClick(ActionEvent event) {
 
-    @FXML
-    void stopMeasureClick(ActionEvent event) {
+	}
 
-    }
+	@FXML
+	void selectAlertsSelect(ActionEvent event) {
 
-    @FXML
-    void stopRecordClick(ActionEvent event) {
+	}
 
-    }
+	@FXML
+	void selectBarTypeSelect(ActionEvent event) {
+
+	}
+
+	@FXML
+	void selectDatabaseSelect(ActionEvent event) {
+
+	}
+
+	@FXML
+	void selectInputTypeSelect(ActionEvent event) {
+
+	}
+
+	@FXML
+	void selectSensorSelect(ActionEvent event) {
+
+	}
+
+	@FXML
+	void showInputInSelect(ActionEvent event) {
+
+	}
+
+	@FXML
+	void showRecordedClick(ActionEvent event) {
+
+	}
+
+	@FXML
+	void startMeasureClick(ActionEvent event) {
+
+	}
+
+	@FXML
+	void startRecordClick(ActionEvent event) {
+
+	}
+
+	@FXML
+	void stopMeasureClick(ActionEvent event) {
+
+	}
+
+	@FXML
+	void stopRecordClick(ActionEvent event) {
+
+	}
+
+	@FXML
+	void alertAddClick(ActionEvent event) {
+
+	}
+
+	@FXML
+	void alertDeleteClick(ActionEvent event) {
+
+	}
+
+	@FXML
+	void databaseAddClick(ActionEvent event) {
+
+	}
+
+	@FXML
+	void databaseDeleteClick(ActionEvent event) {
+
+	}
+
+	@FXML
+	void sensorAddClick(ActionEvent event) {
+
+	}
+
+	@FXML
+	void sensorDeleteClick(ActionEvent event) {
+
+	}
+
  
     public void graphPlotter (Datapoint datapoint) {
 		XYChart.Series series = new XYChart.Series();

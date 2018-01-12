@@ -161,24 +161,30 @@
 						</children>
 					</TreeItem>
 					<contextMenu>
-						<ContextMenu>
+						<ContextMenu fx:id="contextMenu">
 							<items>
-								<Menu mnemonicParsing="false" text="Sensor...">
+								<Menu fx:id="menuSensor" mnemonicParsing="false" text="Sensor...">
 									<items>
-										<MenuItem mnemonicParsing="false" text="add" />
-										<MenuItem mnemonicParsing="false" text="delete" />
+										<MenuItem fx:id="sensorAdd" mnemonicParsing="false"
+											onAction="#sensorAddClick" text="add" />
+										<MenuItem fx:id="sensorDelete" mnemonicParsing="false"
+											onAction="#sensorDeleteClick" text="delete" />
 									</items>
 								</Menu>
-								<Menu mnemonicParsing="false" text="Database...">
+								<Menu fx:id="menuDatabase" mnemonicParsing="false" text="Database...">
 									<items>
-										<MenuItem mnemonicParsing="false" text="add" />
-										<MenuItem mnemonicParsing="false" text="delete" />
+										<MenuItem fx:id="databaseAdd" mnemonicParsing="false"
+											onAction="#databaseAddClick" text="add" />
+										<MenuItem fx:id="databaseDelete" mnemonicParsing="false"
+											onAction="#databaseDeleteClick" text="delete" />
 									</items>
 								</Menu>
-								<Menu mnemonicParsing="false" text="Alert...">
+								<Menu fx:id="menuAlert" mnemonicParsing="false" text="Alert...">
 									<items>
-										<MenuItem mnemonicParsing="false" text="add" />
-										<MenuItem mnemonicParsing="false" text="delete" />
+										<MenuItem fx:id="alertAdd" mnemonicParsing="false"
+											onAction="#alertAddClick" text="add" />
+										<MenuItem fx:id="alertDelete" mnemonicParsing="false"
+											onAction="#alertDeleteClick" text="delete" />
 									</items>
 								</Menu>
 							</items>
