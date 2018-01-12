@@ -140,13 +140,13 @@ public class Controller{
     private TreeItem<?> revyAlTree;
 
     @FXML
-    private LineChart<?, ?> pressureChart;
+    public static LineChart<?, ?> pressureChart;
 
     @FXML
-    private LineChart<?, ?> temperatureChart;
+    public static LineChart<?, ?> temperatureChart;
 
     @FXML
-    private LineChart<?, ?> rotationsChart;
+    public static LineChart<?, ?> rotationsChart;
 
     @FXML
     void compareClick(ActionEvent event) {
@@ -190,10 +190,13 @@ public class Controller{
 
     @FXML
     void startMeasureClick(ActionEvent event) {
+
+        System.out.println("event fired");
     	Model model = new Model();
-    	model.addSensor();
-    	model.connectToSensor(0);
-    	graphPlotter(new Datapoint());
+    	String[] crap = new String[1];
+
+    	model.main(crap);
+    	//graphPlotter(new Datapoint());
 
     }
 

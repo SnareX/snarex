@@ -8,7 +8,10 @@ import de.hftstuttgart.snarex.datapoint.Datapoint;
 import de.hftstuttgart.snarex.datapoint.DpConsumer;
 import de.hftstuttgart.snarex.sensor.Sensor;
 
+import static java.lang.Thread.sleep;
+
 public class Model {
+	public static final boolean DEBUG = true;
 
     /**
      * Vector containing all Sensor Objects
@@ -51,13 +54,20 @@ public class Model {
 
         DpConsumer dpc = new DpConsumer();
         try{
-            dpc.wait();
-        } catch (InterruptedException e) {
+            dpc.start();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
+		System.out.println("connecting to sensor...");
 		model1.connectToSensor(0);
 
+		try {
+			System.out.println("sleep");
+			sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		dpc.interrupt();
         // model1.closeSensorConnection(0);
 
 	}
