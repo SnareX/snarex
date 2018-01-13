@@ -7,6 +7,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 import de.hftstuttgart.snarex.datapoint.Datapoint;
 import de.hftstuttgart.snarex.datapoint.DpConsumer;
 import de.hftstuttgart.snarex.sensor.Sensor;
+import javafx.application.Platform;
 
 import static java.lang.Thread.sleep;
 
@@ -50,19 +51,22 @@ public class Model {
 		Model model1 = new Model();
 		model1.addSensor();
 
-        DpConsumer dpc = new DpConsumer();
-        try{
+        /*DpConsumer dpc = new DpConsumer();
+        dpc.associateController();*/
+
+        /*try{
             dpc.start();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 		System.out.println("connecting to sensor...");
 		model1.connectToSensor(0);
 
-
-        // model1.closeSensorConnection(0);
+        // model1.closeSensorConnection(0)
 
 	}
+
+
 
     public void insert() {
 

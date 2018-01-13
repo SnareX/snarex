@@ -115,14 +115,16 @@ public class Controller {
 	@FXML
 	private MenuItem databaseDelete;
 
-    @FXML
-    private LineChart<?, ?> pressureChart;
 
-    @FXML
-    private LineChart<?, ?> temperatureChart;
+	//made public to fix chart issues
+	@FXML
+	public LineChart<?, ?> pressureChart;
 
-    @FXML
-    private LineChart<?, ?> rotationsChart;
+	@FXML
+	public LineChart<?, ?> temperatureChart;
+
+	@FXML
+	public LineChart<?, ?> rotationsChart;
 
 	@FXML
 	private MenuItem alertAdd;

@@ -3,20 +3,18 @@ package de.hftstuttgart.snarex.datapoint;
 import de.hftstuttgart.snarex.controller.Controller;
 import de.hftstuttgart.snarex.launcher.Launcher;
 import de.hftstuttgart.snarex.model.Model;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.chart.XYChart;
 
+/**
+ *
+ * This Thread consumes datapoints from dpQueue, computes them and passes them to JavaFx Thread
+ */
 public class DpConsumer extends Thread{
 
-    @FXML
     private Controller controller;
 
-    public void initialize(){
-        if (controller != null){
-            System.out.println("Controller is available");
-        }
-
-    }
     public DpConsumer(){
         System.out.println("dpc created");
 
@@ -24,7 +22,6 @@ public class DpConsumer extends Thread{
     @Override
     public void run(){
         try{
-            this.initialize();
             System.out.println("dpc running");
             synchronized (Model.dpQueue){
                 while(!isInterrupted()) {
@@ -43,33 +40,39 @@ public class DpConsumer extends Thread{
         }
 
     }
+
+    //associates the JavaFX Controller with the Consumer.
+    //Controller instance is created in Launcher.java
+    public void associateController(Controller c){
+        this.controller = c;
+    }
+
+    //turns data into XYChart.series objects and passes those to JavaFx Thread
     public void graphPlotter (Datapoint datapoint) {
+
+        //create new XYChart.series objects
         XYChart.Series series = new XYChart.Series();
         XYChart.Series series_1 = new XYChart.Series();
         XYChart.Series series_2 = new XYChart.Series();
+
+        //Sys Out to prove this stuff is working
         System.out.println(datapoint.getSekunden() + "  " + Double.toString(datapoint.getPressure()));
 
-        if(series != null){
-            if(series.getData() == null){
-                System.out.println("Data == null");
+        //add new data from datapoint to series objects
+        series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
+        series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));
+        series_2.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
+
+        //passes modification in UI to JavaFX Thread
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                controller.temperatureChart.getData().addAll(series);
+                controller.pressureChart.getData().addAll(series_1);
+                controller.rotationsChart.getData().addAll(series_2);
             }
-            if(datapoint.getSekunden() == null){
-                System.out.println("Sekunden == null");
-            }
-//            if(datapoint.getTemperature()== null){
-//                System.out.println("Temperatur == null");
-//            }
-        }
+        });
 
-        series.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getTemperature()));
-        series_1.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getPressure()));
-        series_2.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getRevolutions()));
-
-
-
-        controller.temperatureChart.getData().addAll(series);
-        controller.pressureChart.getData().addAll(series_1);
-        controller.rotationsChart.getData().addAll(series_2);
 
         //XYChart.Series seriesArr[] = {series, series_1, series_2};
         //Launcher.c.finalPlotter(seriesArr);
