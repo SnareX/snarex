@@ -279,24 +279,5 @@ public class Controller {
 
 	}
 
- 
-    public void graphPlotter (Datapoint datapoint) {
-		XYChart.Series series = new XYChart.Series();
-		XYChart.Series series_1 = new XYChart.Series();
-		XYChart.Series series_2 = new XYChart.Series();
-		series_1.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getPressure()));
-		series_2.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getRevolutions()));
-		series.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getTemperature()));
-		temperatureChart.getData().addAll(series);
-		pressureChart.getData().addAll(series_1);
-		rotationsChart.getData().addAll(series_2);
-	}
-	public void finalPlotter(XYChart.Series[] seriesArr){
-		temperatureChart.getData().addAll(seriesArr[0]);
-		pressureChart.getData().addAll(seriesArr[1]);
-		rotationsChart.getData().addAll(seriesArr[2]);
-	}
-
-	
 
 }
