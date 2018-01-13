@@ -73,14 +73,23 @@ public class DpConsumer extends Thread {
 				@Override
 				public void run() {
 					controller.temperatureChart.getData().add(series);
+					controller.temperatureChart.setCreateSymbols(false);
 					controller.pressureChart.getData().add(series_1);
+					controller.pressureChart.setCreateSymbols(false);
 					controller.rotationsChart.getData().add(series_2);
+					controller.rotationsChart.setCreateSymbols(false);
+					
 				}
 			});
 
 		}
 
 		else {
+		
+			if (series.getData().size() < 30) {
+				
+			
+		
 
 			// add new data from datapoint to series objects
 			series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
@@ -88,6 +97,18 @@ public class DpConsumer extends Thread {
 			series_2.getData()
 					.add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
 		}
-
+			
+			else {
+				
+				series.getData().remove(0);
+				series_1.getData().remove(0);
+				series_2.getData().remove(0);
+				
+				series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
+				series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));
+				series_2.getData()
+						.add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
+			}
+		}
 	}
 }
