@@ -296,4 +296,12 @@ public class Controller {
 	}
 
 
+	public void colorPickerTemperatureSelect(ActionEvent actionEvent) {
+	}
+
+	public void colorPickerPressureSelect(ActionEvent actionEvent) {
+	}
+
+	public void colorPickerRevolutionsSelect(ActionEvent actionEvent) {
+	}
 }
