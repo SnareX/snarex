@@ -44,7 +44,8 @@ public class Launcher extends Application {
 			primaryStage.setScene(new Scene(outerPane));
 			primaryStage.setTitle("Snarex");
 			primaryStage.show();
-			
+
+
 			
 		}
 		
