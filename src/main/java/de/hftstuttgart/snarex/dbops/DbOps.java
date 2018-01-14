@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 public class DbOps {
 	static SessionFactory factory;
 	
-	public void getConnection() {
+	public static void getConnection() {
 		try {
 			factory = new Configuration().configure().buildSessionFactory();
 			System.out.println("SessionFactory object created successfully. Connection to database is up.");
