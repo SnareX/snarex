@@ -18,7 +18,7 @@ public class DbOps {
 	public static SessionFactory factory;
 	
 	/* create Connection to Database */
-	public static void getConnectionToDb() {
+	public static void getConnectionDb() {
 		try {
 			factory = new Configuration().configure().buildSessionFactory();
 			System.out.println("SessionFactory object created successfully. Connection to database is up.");
