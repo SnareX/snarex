@@ -204,7 +204,7 @@ public class Controller {
 	@FXML
 	void clearChartClick(ActionEvent event) {
 
-		// zugriff auf andere buttons während des clearens verweigern muss hinzugefügt werden
+		// zugriff auf andere buttons wahrend des clearens verweigern muss hinzugefugt werden
 		temperatureChart.getData().get(0).getData().clear();
 		pressureChart.getData().get(0).getData().clear();
 		rotationsChart.getData().get(0).getData().clear();
