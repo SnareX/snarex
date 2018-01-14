@@ -15,7 +15,7 @@ import java.util.List;
 public class DbOps {
 	
 
-	static SessionFactory factory;
+	public static SessionFactory factory;
 	
 	/* create Connection to Database */
 	public static void getConnectionToDb() {
