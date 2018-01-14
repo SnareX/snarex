@@ -42,7 +42,7 @@ public class DbOps {
 		}
 	}
 	
-	/* delete data from table DATAPOINTS with recordName*/
+	/* delete data from table DATAPOINTS with recordName */
 	public static void deleteData(String recordName) {
 		Session session = factory.openSession();
 		session.beginTransaction();
