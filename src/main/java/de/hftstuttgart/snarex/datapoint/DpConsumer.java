@@ -58,6 +58,8 @@ public class DpConsumer extends Thread {
 	// turns data into XYChart.series objects and passes those to JavaFx Thread
 	public void graphPlotter(Datapoint datapoint) {
 
+		// adds series only 1 time, so there won't be an exception
+		
 		if (series.getData().size() == 0) {
 
 			// Sys Out to prove this stuff is working
@@ -66,7 +68,8 @@ public class DpConsumer extends Thread {
 			// add new data from datapoint to series objects
 			series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
 			series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));
-			series_2.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
+			series_2.getData()
+					.add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
 
 			// passes modification in UI to JavaFX Thread
 			Platform.runLater(new Runnable() {
@@ -78,37 +81,38 @@ public class DpConsumer extends Thread {
 					controller.pressureChart.setCreateSymbols(false);
 					controller.rotationsChart.getData().add(series_2);
 					controller.rotationsChart.setCreateSymbols(false);
-					
+
 				}
 			});
 
 		}
 
 		else {
-		
-			if (series.getData().size() < 30) {
-				
-			
-		
 
-			// add new data from datapoint to series objects
-			series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
-			series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));
-			series_2.getData()
-					.add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
-		}
+			// graph continues growing until 30 measurments are reached
+			
+			if (series.getData().size() < 60) {
+
+				// add new data from datapoint to series objects
+				series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
+				series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));
+				series_2.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
+			}
+
+			// a measurment gets added while the first measurment gets deleted, so the graph doesn't get to tight
 			
 			else {
-				
+
+ 
+				series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
+				series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));
+				series_2.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
+
 				series.getData().remove(0);
 				series_1.getData().remove(0);
 				series_2.getData().remove(0);
-				
-				series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
-				series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));
-				series_2.getData()
-						.add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
+}
 			}
 		}
 	}
-}
+

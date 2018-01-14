@@ -15,7 +15,7 @@ public class Model {
     /**
      * Vector containing all Sensor Objects
      */
-    public Vector<Sensor> sensorVector = new Vector<>();
+    public static Vector<Sensor> sensorVector = new Vector<>();
     public static BlockingQueue<Datapoint> dpQueue = new LinkedBlockingDeque<Datapoint>();
 
 	/**
@@ -41,7 +41,7 @@ public class Model {
 	 * @param index the number of the element in Vector
      *
 	 */
-	public void closeSensorConnection(int index) {
+	public static void closeSensorConnection(int index) {
 		sensorVector.elementAt(index).close();
 
 	}

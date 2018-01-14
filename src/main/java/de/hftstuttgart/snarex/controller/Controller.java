@@ -68,7 +68,7 @@ public class Controller {
 	private Button stopMeasuringBtn;
 
 	@FXML
-	private Button startRecordBtn;
+	public Button startRecordBtn;
 
 	@FXML
 	private Button stopRecordBtn;
@@ -241,6 +241,8 @@ public class Controller {
 
 	@FXML
 	void stopMeasureClick(ActionEvent event) {
+		
+		Model.closeSensorConnection(0);
 
 	}
 
