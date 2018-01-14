@@ -95,4 +95,14 @@ public class Datapoint {
 	public void setTemperature(double temperature) {
 		this.temperature = temperature;
 	}
+
+	public String getRecordName() {
+		return recordName;
+	}
+
+	public void setRecordName(String recordName) {
+		this.recordName = recordName;
+	}
+	
+	
 }
