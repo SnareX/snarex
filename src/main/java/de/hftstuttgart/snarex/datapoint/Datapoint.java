@@ -11,7 +11,7 @@ public class Datapoint {
 	private double temperature;
 	private double pressure;
 	private double revolutions;
-	private String sekunden;
+	private String uhrzeit;
 	private LocalDateTime date;
 	String recordName;
 
@@ -25,7 +25,7 @@ public class Datapoint {
 		this.temperature = sEvent.getTemperature();
 		this.pressure = sEvent.getPressure();
 		this.revolutions = sEvent.getRevolutions();
-		this.sekunden = date.format(formatter);
+		this.uhrzeit = date.format(formatter);
 	}
 	
 	/* Constructor: saving into database */
@@ -43,7 +43,7 @@ public class Datapoint {
 		this.pressure = pressure;
 		this.revolutions = revolutions;
 		this.date = LocalDateTime.now();
-		this.sekunden = date.format(formatter);
+		this.uhrzeit = date.format(formatter);
 
 	}
 
@@ -64,11 +64,11 @@ public class Datapoint {
 	}
 
 	public String getSekunden() {
-		return sekunden;
+		return uhrzeit;
 	}
 
 	public void setSekunden(String sekunden) {
-		this.sekunden = sekunden;
+		this.uhrzeit = sekunden;
 	}
 
 	public double getPressure() {
