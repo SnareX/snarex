@@ -4,6 +4,7 @@ import de.hftstuttgart.snarex.controller.Controller;
 import de.hftstuttgart.snarex.datapoint.DpConsumer;
 import de.hftstuttgart.snarex.model.Model;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +24,12 @@ public class Launcher extends Application {
 			URL location = Controller.class.getResource("/de/hftstuttgart/snarex/view/View5.fxml"); //beginning with slash to imply from project root
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(location);
+			
+			primaryStage.setOnCloseRequest(e -> {
+				Platform.exit();
+				System.exit(0);
+			
+			});
 
 			//get root / outer pane
 			BorderPane outerPane = (BorderPane) loader.load();

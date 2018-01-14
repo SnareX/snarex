@@ -1,6 +1,7 @@
 package de.hftstuttgart.snarex.controller;
 
 import de.hftstuttgart.snarex.datapoint.Datapoint;
+import de.hftstuttgart.snarex.datapoint.DpConsumer;
 import de.hftstuttgart.snarex.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,6 +80,9 @@ public class Controller {
 	@FXML
 	private Button compareBtn;
 
+	@FXML
+	private Button clearChartBtn;
+	
 	@FXML
 	private ColorPicker tempColorPicker;
 
@@ -187,10 +191,8 @@ public class Controller {
     void startMeasureClick(ActionEvent event) {
 
         System.out.println("event fired");
-        Model model = new Model();
         String[] crap = new String[1];
-
-        model.main(crap);
+        Model.main(crap);
         //graphPlotter(new Datapoint());
     }
 
@@ -198,7 +200,19 @@ public class Controller {
 	void compareClick(ActionEvent event) {
 
 	}
+	
+	@FXML
+	void clearChartClick(ActionEvent event) {
 
+		// zugriff auf andere buttons während des clearens verweigern muss hinzugefügt werden
+		temperatureChart.getData().get(0).getData().clear();
+		pressureChart.getData().get(0).getData().clear();
+		rotationsChart.getData().get(0).getData().clear();
+		rotationsChart.getData().clear();
+		pressureChart.getData().clear();
+		temperatureChart.getData().clear();
+	}
+	
 	@FXML
 	void selectAlertsSelect(ActionEvent event) {
 
