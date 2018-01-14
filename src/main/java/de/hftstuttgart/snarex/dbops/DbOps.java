@@ -1,4 +1,4 @@
 package de.hftstuttgart.snarex.dbops;
 
-public class DpOps {
+public class DbOps {
 }
