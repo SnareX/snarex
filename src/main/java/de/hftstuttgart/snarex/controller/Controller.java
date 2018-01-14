@@ -1,6 +1,7 @@
 package de.hftstuttgart.snarex.controller;
 
 import de.hftstuttgart.snarex.datapoint.Datapoint;
+import de.hftstuttgart.snarex.datapoint.DpConsumer;
 import de.hftstuttgart.snarex.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -68,7 +69,7 @@ public class Controller {
 	private Button stopMeasuringBtn;
 
 	@FXML
-	private Button startRecordBtn;
+	public Button startRecordBtn;
 
 	@FXML
 	private Button stopRecordBtn;
@@ -79,6 +80,9 @@ public class Controller {
 	@FXML
 	private Button compareBtn;
 
+	@FXML
+	private Button clearChartBtn;
+	
 	@FXML
 	private ColorPicker tempColorPicker;
 
@@ -115,14 +119,16 @@ public class Controller {
 	@FXML
 	private MenuItem databaseDelete;
 
-    @FXML
-    private LineChart<?, ?> pressureChart;
 
-    @FXML
-    private LineChart<?, ?> temperatureChart;
+	//made public to fix chart issues
+	@FXML
+	public LineChart<?, ?> pressureChart;
 
-    @FXML
-    private LineChart<?, ?> rotationsChart;
+	@FXML
+	public LineChart<?, ?> temperatureChart;
+
+	@FXML
+	public LineChart<?, ?> rotationsChart;
 
 	@FXML
 	private MenuItem alertAdd;
@@ -185,10 +191,8 @@ public class Controller {
     void startMeasureClick(ActionEvent event) {
 
         System.out.println("event fired");
-        Model model = new Model();
         String[] crap = new String[1];
-
-        model.main(crap);
+        Model.main(crap);
         //graphPlotter(new Datapoint());
     }
 
@@ -196,7 +200,19 @@ public class Controller {
 	void compareClick(ActionEvent event) {
 
 	}
+	
+	@FXML
+	void clearChartClick(ActionEvent event) {
 
+		// zugriff auf andere buttons während des clearens verweigern muss hinzugefügt werden
+		temperatureChart.getData().get(0).getData().clear();
+		pressureChart.getData().get(0).getData().clear();
+		rotationsChart.getData().get(0).getData().clear();
+		rotationsChart.getData().clear();
+		pressureChart.getData().clear();
+		temperatureChart.getData().clear();
+	}
+	
 	@FXML
 	void selectAlertsSelect(ActionEvent event) {
 
@@ -239,6 +255,8 @@ public class Controller {
 
 	@FXML
 	void stopMeasureClick(ActionEvent event) {
+		
+		Model.closeSensorConnection(0);
 
 	}
 
@@ -277,24 +295,5 @@ public class Controller {
 
 	}
 
- 
-    public void graphPlotter (Datapoint datapoint) {
-		XYChart.Series series = new XYChart.Series();
-		XYChart.Series series_1 = new XYChart.Series();
-		XYChart.Series series_2 = new XYChart.Series();
-		series_1.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getPressure()));
-		series_2.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getRevolutions()));
-		series.getData().add(new XYChart.Data<>(datapoint.getSekunden(), datapoint.getTemperature()));
-		temperatureChart.getData().addAll(series);
-		pressureChart.getData().addAll(series_1);
-		rotationsChart.getData().addAll(series_2);
-	}
-	public void finalPlotter(XYChart.Series[] seriesArr){
-		temperatureChart.getData().addAll(seriesArr[0]);
-		pressureChart.getData().addAll(seriesArr[1]);
-		rotationsChart.getData().addAll(seriesArr[2]);
-	}
-
-	
 
 }

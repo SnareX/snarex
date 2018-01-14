@@ -27,7 +27,7 @@ public class Datapoint {
 		this.sekunden = date.format(formatter);
 	}
 
-	public Datapoint(double temperature, double pressure, double revolutions) { // ???
+	public Datapoint(double temperature, double pressure, double revolutions) {
 		this.temperature = temperature;
 		this.pressure = pressure;
 		this.revolutions = revolutions;
