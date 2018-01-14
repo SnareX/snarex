@@ -13,6 +13,7 @@ public class Datapoint {
 	private double revolutions;
 	private String sekunden;
 	private LocalDateTime date;
+	String recordName;
 
 	static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
@@ -26,7 +27,17 @@ public class Datapoint {
 		this.revolutions = sEvent.getRevolutions();
 		this.sekunden = date.format(formatter);
 	}
+	
+	/* Constructor: saving into database */
+	public Datapoint(double temperature, double pressure, double revolutions, String recordName) {
+		this.date = LocalDateTime.now();
+		this.temperature = temperature;
+		this.pressure = pressure;
+		this.revolutions = revolutions;
+		this.recordName = recordName;
+	}
 
+	/* Constructor: saving into XYChart */
 	public Datapoint(double temperature, double pressure, double revolutions) {
 		this.temperature = temperature;
 		this.pressure = pressure;

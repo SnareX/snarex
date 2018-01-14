@@ -1,4 +1,31 @@
-<class name="de.hftstuttgart.snarex.datapoint.Datapoint" table="Aufzeichnungsdaten">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="de.hftstuttgart.snarex.datapoint.Datapoint" table="DATAPOINTS">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
 
-</class>
+		<property name="date" type="LocalDateTime">
+			<column name="date" />
+		</property>
+		<property name="temperature" type="double">
+			<column name="temperature" />
+		</property>
+		<property name="pressure" type="double">
+			<column name="pressure" />
+		</property>
+		<property name="revolutions" type="double">
+			<column name="revolutions" />
+		</property>
+		<property name="recordName" type="String">
+			<column name="redcordName"	/>	
+		</property>
+			
+	</class>
+</hibernate-mapping>
+
 
