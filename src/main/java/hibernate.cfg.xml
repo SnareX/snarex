@@ -7,7 +7,7 @@
 		<!-- Database properties -->
 		<property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
 		<property name="hibernate.connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property>
-		<property name="hibernate.connection.url">jdbc:derby:snarexDb</property>
+		<property name="hibernate.connection.url">jdbc:derby:src\main\resources\snarexDb</property>
 		<property name="hibernate.connection.username">snarex</property>
 		<property name="hibernate.connection.password">snarex</property>
 
