@@ -24,7 +24,7 @@ public class Launcher extends Application {
 
 
 			//connect fxmlloader to fxml file, using the preferred non-static method
-			URL location = Controller.class.getResource("/de/hftstuttgart/snarex/view/View5.fxml"); //beginning with slash to imply from project root
+			URL location = Controller.class.getResource("/de/hftstuttgart/snarex/view/View4.fxml"); //beginning with slash to imply from project root
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(location);
 			
