@@ -61,34 +61,4 @@ public class Model {
 		model1.connectToSensor(0);
 
 	}
-
-
-
-    public void insert() {
-
-    }
-
-    public void read() {
-
-    }
-
-    public void delete() {
-
-    }
-
-    public void connect() {
-
-    }
-
-	public void createTable() {
-
-	}
-
-	public void close() {
-
-	}
-	
-	
-	
-	
 }
