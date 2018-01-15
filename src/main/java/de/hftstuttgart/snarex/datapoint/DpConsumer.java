@@ -76,10 +76,13 @@ public class DpConsumer extends Thread {
 				public void run() {
 					controller.temperatureChart.getData().add(series);
 					controller.temperatureChart.setCreateSymbols(false);
+					controller.temperatureChart.setLegendVisible(false);
 					controller.pressureChart.getData().add(series_1);
 					controller.pressureChart.setCreateSymbols(false);
+					controller.pressureChart.setLegendVisible(false);
 					controller.rotationsChart.getData().add(series_2);
 					controller.rotationsChart.setCreateSymbols(false);
+					controller.rotationsChart.setLegendVisible(false);
 
 				}
 			});

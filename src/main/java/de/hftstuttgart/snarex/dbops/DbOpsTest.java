@@ -12,8 +12,8 @@ public class DbOpsTest {
 			DbOps.getConnectionDb();
 			
 			// create new object
-			Datapoint dtp = new Datapoint(36.2,2.2,8000.1);
-			DbOps.saveData(dtp,"Adrian");
+//			Datapoint dtp = new Datapoint(36.2,2.2,8000.1);
+//			DbOps.saveData(dtp,"Adrian");
 			
 			// delete data
 			//DbOps.deleteData("Adrian");
