@@ -41,6 +41,16 @@ public class Controller {
 
 	Stage secondaryStage = new Stage();
 	Stage loadingStage = new Stage();
+	Stage deletingStage = new Stage();
+	
+	@FXML
+	private Button deleteDeleting;
+	
+	@FXML
+	private Button closeDeleting;
+	
+	@FXML
+	private TextField DeletingInput;
 	
 	@FXML
 	private TextField LoadingInput;
@@ -263,11 +273,28 @@ public class Controller {
 	private TextField userInput;
 	
 	@FXML
+	void deleteCloseClicked(ActionEvent event) {
+		Stage stage = (Stage) deleteDeleting.getScene().getWindow();
+		stage.close();
+	}
+	
+	@FXML
+	void deleteClicked(ActionEvent event) {
+		String delName = DeletingInput.getText();
+		DbOps.deleteData(delName);
+		
+		Stage stage = (Stage) closeDeleting.getScene().getWindow();
+		stage.close();
+	}
+	@FXML
 	void loadClicked(ActionEvent event) {
 		String recName = LoadingInput.getText();
 		List <Datapoint> loadedPoints = DbOps.getData(recName);
 		DbOps ops = new DbOps();
 		ops.intervalPush(loadedPoints);
+		
+		Stage stage = (Stage) closeLoading.getScene().getWindow();
+		stage.close();
 	}
 	
 	@FXML
@@ -356,8 +383,21 @@ public class Controller {
 	}
 
 	@FXML
-	void deleteDataSubItemClicked(ActionEvent event) {
-		// Method to delete data from database
+	void deleteDataSubItemClicked(ActionEvent event) throws IOException {
+		// show popup
+				URL location = Controller.class.getResource("/de/hftstuttgart/snarex/view/DeletingPopUp.fxml"); // beginning with slash
+																										// to imply from project
+																										// root
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(location);
+
+				// get root / outer pane
+				Pane outerPane = (Pane) loader.load();
+
+				// set up the scene
+				deletingStage.setScene(new Scene(outerPane));
+				deletingStage.setTitle("Snarex");
+				deletingStage.show();
 	}
 
 	@FXML
