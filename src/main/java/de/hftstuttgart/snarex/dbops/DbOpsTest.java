@@ -12,16 +12,16 @@ public class DbOpsTest {
 			DbOps.getConnectionDb();
 			
 			// create new object
-//			Datapoint dtp = new Datapoint(36.2,2.2,8000.1);
-//			DbOps.saveData(dtp,"Adrian");
+			Datapoint dtp = new Datapoint(36.2,2.2,8000.1);
+			DbOps.saveData(dtp,"Adrian");
 			
 			// delete data
-			DbOps.deleteData("Adrian");
+			//DbOps.deleteData("Adrian");
 			
 			//read from database
 			List<Datapoint> datapoints = DbOps.getData("Adrian");
-			for(Datapoint dtp : datapoints) {
-				System.out.println(dtp.getId() + " "+dtp.getDate()+" "+dtp.getTemperature()+" "+dtp.getPressure()+" "+dtp.getRevolutions()+ " "+dtp.getRecordName());
+			for(Datapoint dtpt : datapoints) {
+				System.out.println(dtpt.getId() + " "+dtpt.getDate()+" "+dtpt.getTemperature()+" "+dtpt.getPressure()+" "+dtpt.getRevolutions()+ " "+dtpt.getRecordName());
 			}
 			
 			
