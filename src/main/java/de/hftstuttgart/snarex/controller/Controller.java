@@ -1,12 +1,16 @@
 package de.hftstuttgart.snarex.controller;
 
-import de.hftstuttgart.snarex.datapoint.Datapoint;
-import de.hftstuttgart.snarex.datapoint.DpConsumer;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Scanner;
+
 import de.hftstuttgart.snarex.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
@@ -82,7 +86,7 @@ public class Controller {
 
 	@FXML
 	private Button clearChartBtn;
-	
+
 	@FXML
 	private ColorPicker tempColorPicker;
 
@@ -94,6 +98,12 @@ public class Controller {
 
 	@FXML
 	private MenuBar menuBar;
+
+	@FXML
+	private MenuBar questionMark;
+
+	@FXML
+	private MenuItem helpItem;
 
 	@FXML
 	private ContextMenu contextMenu;
@@ -108,6 +118,31 @@ public class Controller {
 	private Menu menuAlert;
 
 	@FXML
+	private Menu openDataItem;
+
+	@FXML
+	private Menu deleteDataItem;
+	
+	@FXML
+	private Menu setVisibleMenu;
+	
+	@FXML
+	private Menu setInvisibleMenu;
+	
+	@FXML
+	private MenuItem setInvisibleMenuItem;
+	
+	@FXML
+	private MenuItem setVisibleMenuItem;
+	
+	@FXML
+	private MenuItem openDataSubItem;
+	
+	@FXML
+	private MenuItem deleteDataSubItem;
+
+
+	@FXML
 	private MenuItem sensorAdd;
 
 	@FXML
@@ -119,8 +154,19 @@ public class Controller {
 	@FXML
 	private MenuItem databaseDelete;
 
+	@FXML
+	private MenuItem alertAdd;
 
-	//made public to fix chart issues
+	@FXML
+	private MenuItem alertDelete;
+
+	@FXML
+	private MenuItem manualItem;
+
+	@FXML
+	private MenuItem supportItem;
+
+	// made public to fix chart issues
 	@FXML
 	public LineChart<?, ?> pressureChart;
 
@@ -129,12 +175,6 @@ public class Controller {
 
 	@FXML
 	public LineChart<?, ?> rotationsChart;
-
-	@FXML
-	private MenuItem alertAdd;
-
-	@FXML
-	private MenuItem alertDelete;
 
 	@FXML
 	private TreeView<?> treeTree;
@@ -187,24 +227,25 @@ public class Controller {
 	@FXML
 	private TreeItem<?> revyAlTree;
 
-    @FXML
-    void startMeasureClick(ActionEvent event) {
+	@FXML
+	void startMeasureClick(ActionEvent event) {
 
-        System.out.println("event fired");
-        String[] crap = new String[1];
-        Model.main(crap);
-        //graphPlotter(new Datapoint());
-    }
+		System.out.println("event fired");
+		String[] crap = new String[1];
+		Model.main(crap);
+		// graphPlotter(new Datapoint());
+	}
 
 	@FXML
 	void compareClick(ActionEvent event) {
 
 	}
-	
+
 	@FXML
 	void clearChartClick(ActionEvent event) {
 
-		// zugriff auf andere buttons wahrend des clearens verweigern muss hinzugefugt werden
+		// zugriff auf andere buttons wahrend des clearens verweigern muss hinzugefugt
+		// werden
 		temperatureChart.getData().get(0).getData().clear();
 		pressureChart.getData().get(0).getData().clear();
 		rotationsChart.getData().get(0).getData().clear();
@@ -212,12 +253,31 @@ public class Controller {
 		pressureChart.getData().clear();
 		temperatureChart.getData().clear();
 	}
+
+	@FXML
+	void setVisibleMenuItemClicked(ActionEvent event) {
+		
+		treeTree.setVisible(true);
+		
+	}
 	
 	@FXML
-	void selectAlertsSelect(ActionEvent event) {
-
+	void setInvisibleMenuItemClicked(ActionEvent event) {
+		
+		treeTree.setVisible(false);
+		
+	}
+	
+	@FXML
+	void openDataSubItemClicked(ActionEvent event) {
+		//Method to load data from database
 	}
 
+	@FXML
+	void deleteDataSubItemClicked(ActionEvent event) {
+		//Method to delete data from database
+	}
+	
 	@FXML
 	void selectBarTypeSelect(ActionEvent event) {
 
@@ -250,12 +310,13 @@ public class Controller {
 
 	@FXML
 	void startRecordClick(ActionEvent event) {
+		// start reading data from cebarround and save into arraylist as cache
 
 	}
 
 	@FXML
 	void stopMeasureClick(ActionEvent event) {
-		
+
 		Model.closeSensorConnection(0);
 
 	}
@@ -263,6 +324,22 @@ public class Controller {
 	@FXML
 	void stopRecordClick(ActionEvent event) {
 
+		// stop reading data from cebarround and ask for record name
+		// start saving from arraylist into database with value recordName
+		
+//		window pop up (" do you want to save your record?")		
+//		if(speichern) {
+//		
+//		Scanner scanner = new Scanner(System.in);
+//		
+//		open window
+//		String recordName = scanner.nextLine();
+//		
+//		}
+//		
+//		else {
+//			clear arraylist
+//		}
 	}
 
 	@FXML
@@ -291,17 +368,72 @@ public class Controller {
 	}
 
 	@FXML
+	void helpItemClicked(ActionEvent event) {
+
+		try {
+			Desktop.getDesktop().browse(new URL("https://github.com/SnareX/snarex/wiki/Support-homepage").toURI());
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void supportItemClicked(ActionEvent event) {
+
+		try {
+			Desktop.getDesktop().browse(new URL("https://github.com/SnareX/snarex/wiki/Support-homepage").toURI());
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@FXML
+	void manualItemClicked(ActionEvent event) {
+
+		try {
+			Desktop.getDesktop().browse(new URL("https://github.com/SnareX/snarex/wiki/Benutzerhandbuch").toURI());
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@FXML
 	void sensorDeleteClick(ActionEvent event) {
 
 	}
 
-
 	public void colorPickerTemperatureSelect(ActionEvent actionEvent) {
+		pressureChart.setStyle("#pressureValues {-fx-bar-fill: " + pressColorPicker.getValue().toString() + " }");
 	}
 
 	public void colorPickerPressureSelect(ActionEvent actionEvent) {
+
 	}
 
 	public void colorPickerRevolutionsSelect(ActionEvent actionEvent) {
+
 	}
 }

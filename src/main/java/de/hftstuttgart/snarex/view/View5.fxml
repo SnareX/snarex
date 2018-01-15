@@ -15,6 +15,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TreeItem?>
 <?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -23,64 +24,95 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1105.0" stylesheets="@ViewCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hftstuttgart.snarex.controller.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0"
+	prefWidth="1105.0" stylesheets="@ViewCSS.css" xmlns="http://javafx.com/javafx/8.0.141"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hftstuttgart.snarex.controller.Controller">
 	<left>
-		<GridPane prefHeight="571.0" prefWidth="211.0" BorderPane.alignment="CENTER">
+		<GridPane prefHeight="571.0" prefWidth="211.0"
+			BorderPane.alignment="CENTER">
 			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="101.0" minWidth="10.0" prefWidth="32.0" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="182.0" minWidth="10.0" prefWidth="179.0" />
+				<ColumnConstraints hgrow="SOMETIMES" maxWidth="101.0"
+					minWidth="10.0" prefWidth="32.0" />
+				<ColumnConstraints hgrow="SOMETIMES" maxWidth="182.0"
+					minWidth="10.0" prefWidth="179.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints maxHeight="89.0" minHeight="8.0" prefHeight="39.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="596.0" minHeight="10.0" prefHeight="272.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="501.0" minHeight="10.0" prefHeight="119.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="501.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="501.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="501.0" minHeight="0.0" prefHeight="39.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="501.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="501.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="89.0" minHeight="8.0"
+					prefHeight="39.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="596.0" minHeight="10.0"
+					prefHeight="272.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="501.0" minHeight="10.0"
+					prefHeight="119.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="501.0" minHeight="10.0"
+					prefHeight="18.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="501.0" minHeight="0.0"
+					prefHeight="40.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="501.0" minHeight="0.0"
+					prefHeight="39.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="501.0" minHeight="10.0"
+					prefHeight="66.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="501.0" minHeight="10.0"
+					prefHeight="46.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
 				<GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
 					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="71.0" />
-						<ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="108.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0"
+							minWidth="10.0" prefWidth="71.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0"
+							minWidth="10.0" prefWidth="108.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-						<RowConstraints maxHeight="242.0" minHeight="0.0" prefHeight="23.0" vgrow="SOMETIMES" />
-						<RowConstraints maxHeight="242.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
-						<RowConstraints maxHeight="170.0" minHeight="9.0" prefHeight="9.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="124.0" minHeight="10.0"
+							prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="242.0" minHeight="0.0"
+							prefHeight="23.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="242.0" minHeight="10.0"
+							prefHeight="48.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="170.0" minHeight="9.0"
+							prefHeight="9.0" vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<Label fx:id="measuringLbl" text="Measuring:" GridPane.rowIndex="1">
+						<Label fx:id="measuringLbl" text="Measuring:"
+							GridPane.rowIndex="1">
 							<font>
 								<Font size="14.0" />
 							</font>
 						</Label>
-						<Button fx:id="startMeasuringBtn" mnemonicParsing="false" onAction="#startMeasureClick" text="Start" GridPane.rowIndex="2" />
-						<Button fx:id="stopMeasuringBtn" mnemonicParsing="false" onAction="#stopMeasureClick" text="Stop" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<Button fx:id="startMeasuringBtn" mnemonicParsing="false"
+							onAction="#startMeasureClick" text="Start" GridPane.rowIndex="2" />
+						<Button fx:id="stopMeasuringBtn" mnemonicParsing="false"
+							onAction="#stopMeasureClick" text="Stop" GridPane.columnIndex="1"
+							GridPane.rowIndex="2" />
 					</children>
 				</GridPane>
-				<Label fx:id="recordLbl" text="Recording data:" GridPane.columnIndex="1" GridPane.rowIndex="4">
+				<Label fx:id="recordLbl" text="Recording data:"
+					GridPane.columnIndex="1" GridPane.rowIndex="4">
 					<font>
 						<Font size="14.0" />
 					</font>
 				</Label>
 				<GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
 					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="72.0" />
-						<ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="107.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0"
+							minWidth="10.0" prefWidth="72.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0"
+							minWidth="10.0" prefWidth="107.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<Button fx:id="startRecordBtn" mnemonicParsing="false" onAction="#startRecordClick" text="Start" />
-						<Button fx:id="stopRecordBtn" mnemonicParsing="false" onAction="#stopRecordClick" text="Stop" GridPane.columnIndex="1" />
+						<Button fx:id="startRecordBtn" mnemonicParsing="false"
+							onAction="#startRecordClick" text="Start" />
+						<Button fx:id="stopRecordBtn" mnemonicParsing="false"
+							onAction="#stopRecordClick" text="Stop" GridPane.columnIndex="1" />
 					</children>
 				</GridPane>
-				<TreeView fx:id="treeTree" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+				<TreeView fx:id="treeTree" prefHeight="200.0" prefWidth="200.0"
+					GridPane.columnIndex="1" GridPane.rowIndex="1">
 					<TreeItem fx:id="rootTree" expanded="true" value="Connections">
 						<children>
 							<TreeItem fx:id="sensorTree" expanded="false" value="Sensors">
@@ -96,23 +128,30 @@
 							</TreeItem>
 							<TreeItem fx:id="alertTree" expanded="false" value="Alerts">
 								<children>
-									<TreeItem fx:id="pressureAlTree" expanded="true" value="Pressure">
+									<TreeItem fx:id="pressureAlTree" expanded="true"
+										value="Pressure">
 										<children>
-											<TreeItem fx:id="pressurexAlTree" expanded="false" value="Pressure X" />
-											<TreeItem fx:id="pressureyAlTree" expanded="false" value="Pressure Y" />
+											<TreeItem fx:id="pressurexAlTree" expanded="false"
+												value="Pressure X" />
+											<TreeItem fx:id="pressureyAlTree" expanded="false"
+												value="Pressure Y" />
 										</children>
 									</TreeItem>
 									<TreeItem fx:id="tempAlTree" expanded="true" value="Temperature">
 										<children>
-											<TreeItem fx:id="tempxAlTree" expanded="false" value="Temperature X" />
-											<TreeItem fx:id="tempyAlTree" expanded="false" value="Temperature Y" />
+											<TreeItem fx:id="tempxAlTree" expanded="false"
+												value="Temperature X" />
+											<TreeItem fx:id="tempyAlTree" expanded="false"
+												value="Temperature Y" />
 										</children>
 									</TreeItem>
 
 									<TreeItem fx:id="revAlTree" expanded="true" value="Revolutions">
 										<children>
-											<TreeItem fx:id="revxAlTree" expanded="false" value="Revelations X" />
-											<TreeItem fx:id="revyAlTree" expanded="false" value="Revelations Y" />
+											<TreeItem fx:id="revxAlTree" expanded="false"
+												value="Revelations X" />
+											<TreeItem fx:id="revyAlTree" expanded="false"
+												value="Revelations Y" />
 										</children>
 									</TreeItem>
 								</children>
@@ -124,130 +163,38 @@
 							<items>
 								<Menu fx:id="menuSensor" mnemonicParsing="false" text="Sensor...">
 									<items>
-										<MenuItem fx:id="sensorAdd" mnemonicParsing="false" onAction="#sensorAddClick" text="add" />
-										<MenuItem fx:id="sensorDelete" mnemonicParsing="false" onAction="#sensorDeleteClick" text="delete" />
+										<MenuItem fx:id="sensorAdd" mnemonicParsing="false"
+											onAction="#sensorAddClick" text="add" />
+										<MenuItem fx:id="sensorDelete" mnemonicParsing="false"
+											onAction="#sensorDeleteClick" text="delete" />
 									</items>
 								</Menu>
 								<Menu fx:id="menuDatabase" mnemonicParsing="false" text="Database...">
 									<items>
-										<MenuItem fx:id="databaseAdd" mnemonicParsing="false" onAction="#databaseAddClick" text="add" />
-										<MenuItem fx:id="databaseDelete" mnemonicParsing="false" onAction="#databaseDeleteClick" text="delete" />
+										<MenuItem fx:id="databaseAdd" mnemonicParsing="false"
+											onAction="#databaseAddClick" text="add" />
+										<MenuItem fx:id="databaseDelete" mnemonicParsing="false"
+											onAction="#databaseDeleteClick" text="delete" />
 									</items>
 								</Menu>
 								<Menu fx:id="menuAlert" mnemonicParsing="false" text="Alert...">
 									<items>
-										<MenuItem fx:id="alertAdd" mnemonicParsing="false" onAction="#alertAddClick" text="add" />
-										<MenuItem fx:id="alertDelete" mnemonicParsing="false" onAction="#alertDeleteClick" text="delete" />
+										<MenuItem fx:id="alertAdd" mnemonicParsing="false"
+											onAction="#alertAddClick" text="add" />
+										<MenuItem fx:id="alertDelete" mnemonicParsing="false"
+											onAction="#alertDeleteClick" text="delete" />
 									</items>
 								</Menu>
 							</items>
 						</ContextMenu>
 					</contextMenu>
 				</TreeView>
-            <Button fx:id="clearChartBtn" mnemonicParsing="false" onAction="#clearChartClick" text="Clear Chart" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+				<Button fx:id="clearChartBtn" mnemonicParsing="false"
+					onAction="#clearChartClick" text="Clear Chart"
+					GridPane.columnIndex="1" GridPane.rowIndex="7" />
 			</children>
 		</GridPane>
 	</left>
-	<bottom>
-		<GridPane prefHeight="125.0" prefWidth="1105.0" BorderPane.alignment="CENTER">
-			<columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="39.0" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="379.0" minWidth="10.0" prefWidth="234.0" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0" minWidth="10.0" prefWidth="136.0" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="432.0" minWidth="0.0" prefWidth="201.0" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="352.0" minWidth="10.0" prefWidth="133.0" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="432.0" minWidth="10.0" prefWidth="136.0" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="164.0" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="104.0" />
-			</columnConstraints>
-			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-			</rowConstraints>
-			<children>
-				<ColorPicker fx:id="tempColorPicker" onAction="#colorPickerTemperatureSelect" GridPane.columnIndex="3" />
-				<ColorPicker fx:id="pressColorPicker" onAction="#colorPickerPressureSelect" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-				<ColorPicker fx:id="rotColorPicker" onAction="#colorPickerRevolutionsSelect" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-				<Label fx:id="tempColorLbl" text="Temperature color:" GridPane.columnIndex="2" />
-				<Label fx:id="pressColorLbl" text="Pressure color:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-				<Label fx:id="rotColorLbl" text="Revolutions color" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-				<ComboBox fx:id="inputTypeComboBox" onAction="#selectInputTypeSelect" prefHeight="25.0" prefWidth="101.0" promptText="Input type:" GridPane.columnIndex="5">
-					<items>
-						<FXCollections fx:factory="observableArrayList">
-							<String fx:value="AVG of last x ms" />
-							<String fx:value="Max of last x" />
-						</FXCollections>
-					</items>
-				</ComboBox>
-				<ComboBox fx:id="barTypeComboBox" onAction="#selectBarTypeSelect" prefHeight="25.0" prefWidth="97.0" promptText="Bar type:" GridPane.columnIndex="4">
-					<items>
-						<FXCollections fx:factory="observableArrayList">
-							<String fx:value="Line chart" />
-							<String fx:value="Adjusted" />
-							<String fx:value="Table logger" />
-						</FXCollections>
-					</items>
-				</ComboBox>
-				<ComboBox fx:id="inputInComboBox" onAction="#showInputInSelect" prefHeight="25.0" prefWidth="123.0" promptText="Show input in:" GridPane.columnIndex="6">
-					<items>
-						<FXCollections fx:factory="observableArrayList">
-							<String fx:value="Ms" />
-							<String fx:value="Sek" />
-							<String fx:value="Min" />
-						</FXCollections>
-					</items>
-				</ComboBox>
-				<Button fx:id="compareBtn" mnemonicParsing="false" onAction="#compareClick" prefHeight="25.0" prefWidth="66.0" text="Compare" GridPane.columnIndex="7" />
-				<Button fx:id="showRecordedBtn" mnemonicParsing="false" onAction="#showRecordedClick" text="Measurements" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-			</children>
-		</GridPane>
-	</bottom>
-	<top>
-		<GridPane BorderPane.alignment="CENTER">
-			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="448.0" minWidth="10.0" prefWidth="228.0" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="877.0" minWidth="10.0" prefWidth="877.0" />
-			</columnConstraints>
-			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-			</rowConstraints>
-			<children>
-				<Label text="Sensor:" GridPane.columnIndex="1" GridPane.rowIndex="2">
-					<font>
-						<Font size="20.0" />
-					</font>
-				</Label>
-				<HBox prefHeight="100.0" prefWidth="200.0">
-					<children>
-						<MenuBar fx:id="menuBar">
-							<menus>
-								<Menu mnemonicParsing="false" text="File">
-									<items>
-										<MenuItem mnemonicParsing="false" text="Close" />
-									</items>
-								</Menu>
-								<Menu mnemonicParsing="false" text="Edit">
-									<items>
-										<MenuItem mnemonicParsing="false" text="Add..." />
-										<MenuItem mnemonicParsing="false" text="Delete..." />
-									</items>
-								</Menu>
-								<Menu mnemonicParsing="false" text="Help">
-									<items>
-										<MenuItem mnemonicParsing="false" text="Benutzerhandbuch" />
-										<MenuItem mnemonicParsing="false" text="Snarex support..." />
-									</items>
-								</Menu>
-							</menus>
-						</MenuBar>
-					</children>
-				</HBox>
-			</children>
-		</GridPane>
-	</top>
 	<center>
 		<VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
 			<children>
@@ -278,4 +225,230 @@
 			</children>
 		</VBox>
 	</center>
+	<bottom>
+		<BorderPane prefHeight="128.0" prefWidth="1105.0"
+			BorderPane.alignment="CENTER">
+			<left>
+				<GridPane BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0"
+							minWidth="10.0" prefWidth="31.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0"
+							minWidth="10.0" prefWidth="169.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Button fx:id="showRecordedBtn" mnemonicParsing="false"
+							onAction="#showRecordedClick" prefHeight="25.0" prefWidth="97.0"
+							text="Measurements" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+					</children>
+				</GridPane>
+			</left>
+			<center>
+				<GridPane prefHeight="125.0" prefWidth="1105.0"
+					BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="379.0"
+							minWidth="10.0" prefWidth="61.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0"
+							minWidth="10.0" prefWidth="145.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="432.0"
+							minWidth="0.0" prefWidth="201.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="352.0"
+							minWidth="10.0" prefWidth="133.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="432.0"
+							minWidth="10.0" prefWidth="136.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0"
+							minWidth="10.0" prefWidth="164.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0"
+							minWidth="10.0" prefWidth="104.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<ColorPicker fx:id="tempColorPicker" onAction="#colorPickerTemperatureSelect"
+							GridPane.columnIndex="2" />
+						<ColorPicker fx:id="pressColorPicker" onAction="#colorPickerPressureSelect"
+							GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<ColorPicker fx:id="rotColorPicker" onAction="#colorPickerRevolutionsSelect"
+							GridPane.columnIndex="2" GridPane.rowIndex="2" />
+						<Label fx:id="tempColorLbl" text="Temperature color:"
+							GridPane.columnIndex="1" />
+						<Label fx:id="pressColorLbl" text="Pressure color:"
+							GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<Label fx:id="rotColorLbl" text="Revolutions color"
+							GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<ComboBox fx:id="inputTypeComboBox" onAction="#selectInputTypeSelect"
+							prefHeight="25.0" prefWidth="101.0" promptText="Input type:"
+							GridPane.columnIndex="4">
+							<items>
+								<FXCollections fx:factory="observableArrayList">
+									<String fx:value="AVG of last x ms" />
+									<String fx:value="Max of last x" />
+								</FXCollections>
+							</items>
+						</ComboBox>
+						<ComboBox fx:id="barTypeComboBox" onAction="#selectBarTypeSelect"
+							prefHeight="25.0" prefWidth="97.0" promptText="Bar type:"
+							GridPane.columnIndex="3">
+							<items>
+								<FXCollections fx:factory="observableArrayList">
+									<String fx:value="Line chart" />
+									<String fx:value="Adjusted" />
+									<String fx:value="Table logger" />
+								</FXCollections>
+							</items>
+						</ComboBox>
+						<ComboBox fx:id="inputInComboBox" onAction="#showInputInSelect"
+							prefHeight="25.0" prefWidth="123.0" promptText="Show input in:"
+							GridPane.columnIndex="5">
+							<items>
+								<FXCollections fx:factory="observableArrayList">
+									<String fx:value="Ms" />
+									<String fx:value="Sek" />
+									<String fx:value="Min" />
+								</FXCollections>
+							</items>
+						</ComboBox>
+						<Button fx:id="compareBtn" mnemonicParsing="false"
+							onAction="#compareClick" prefHeight="25.0" prefWidth="66.0" text="Compare"
+							GridPane.columnIndex="6" />
+					</children>
+				</GridPane>
+			</center>
+		</BorderPane>
+	</bottom>
+	<top>
+		<BorderPane prefHeight="110.0" prefWidth="1105.0"
+			BorderPane.alignment="CENTER">
+			<top>
+				<GridPane prefHeight="18.0" prefWidth="1105.0"
+					BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<HBox prefHeight="100.0" prefWidth="200.0">
+							<children>
+								<MenuBar fx:id="menuBar">
+									<menus>
+										<Menu mnemonicParsing="false" text="File">
+											<items>
+												<Menu fx:id="openDataItem" mnemonicParsing="false"
+													text="Open...">
+													<items>
+														<MenuItem fx:id="openDataSubItem"
+															mnemonicParsing="false" onAction="#openDataSubItemClicked"
+															text="saved data" />
+													</items>
+												</Menu>
+												<Menu fx:id="deleteDataItem" mnemonicParsing="false"
+													text="Delete...">
+													<items>
+														<MenuItem fx:id="deleteDataSubItem"
+															mnemonicParsing="false" onAction="#deleteDataSubItemClicked"
+															text="saved data" />
+													</items>
+												</Menu>
+											</items>
+										</Menu>
+										<Menu mnemonicParsing="false" text="Edit">
+											<items>
+												<Menu fx:id="setVisibleMenu" mnemonicParsing="false"
+													text="Set visible...">
+													<items>
+														<MenuItem fx:id="setVisibleMenuItem"
+															mnemonicParsing="false" onAction="#setVisibleMenuItemClicked"
+															text="Treeview" />
+													</items>
+												</Menu>
+												<Menu fx:id="setInvisibleMenu" mnemonicParsing="false"
+													text="Set invisible...">
+													<items>
+														<MenuItem fx:id="setInvisibleMenuItem"
+															mnemonicParsing="false" onAction="#setInvisibleMenuItemClicked"
+															text="Treeview" />
+													</items>
+												</Menu>
+											</items>
+										</Menu>
+										<Menu mnemonicParsing="false" text="Help">
+											<items>
+												<MenuItem fx:id="manualItem" mnemonicParsing="false"
+													onAction="#manualItemClicked" text="Manual" />
+												<MenuItem fx:id="supportItem" mnemonicParsing="false"
+													onAction="#supportItemClicked" text="Support" />
+											</items>
+										</Menu>
+									</menus>
+								</MenuBar>
+							</children>
+						</HBox>
+						<AnchorPane prefHeight="200.0" prefWidth="200.0"
+							GridPane.columnIndex="1">
+							<children>
+								<MenuBar fx:id="questionMark" layoutX="4.0" layoutY="1.0"
+									prefHeight="25.0" prefWidth="30.0" AnchorPane.rightAnchor="0.0"
+									AnchorPane.topAnchor="0.0">
+									<menus>
+										<Menu mnemonicParsing="false" text="?">
+											<items>
+												<MenuItem fx:id="helpItem" mnemonicParsing="false"
+													onAction="#helpItemClicked" text="Help" />
+											</items>
+										</Menu>
+									</menus>
+								</MenuBar>
+							</children>
+						</AnchorPane>
+					</children>
+				</GridPane>
+			</top>
+			<bottom>
+				<GridPane prefHeight="30.0" prefWidth="1105.0"
+					BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="1072.0"
+							minWidth="10.0" prefWidth="1072.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<HBox prefHeight="100.0" prefWidth="200.0">
+							<children>
+								<Label prefHeight="17.0" prefWidth="250.0" />
+								<Label text="Sensor:">
+									<font>
+										<Font size="20.0" />
+									</font>
+								</Label>
+							</children>
+						</HBox>
+					</children>
+				</GridPane>
+			</bottom>
+		</BorderPane>
+	</top>
 </BorderPane>

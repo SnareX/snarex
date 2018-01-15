@@ -26,6 +26,7 @@ public class Launcher extends Application {
 			loader.setLocation(location);
 			
 			primaryStage.setOnCloseRequest(e -> {
+				Controller con = new Controller();
 				Platform.exit();
 				System.exit(0);
 			
