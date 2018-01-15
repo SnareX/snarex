@@ -2,6 +2,7 @@ package de.hftstuttgart.snarex.launcher;
 
 import de.hftstuttgart.snarex.controller.Controller;
 import de.hftstuttgart.snarex.datapoint.DpConsumer;
+import de.hftstuttgart.snarex.dbops.DbOps;
 import de.hftstuttgart.snarex.model.Model;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -12,6 +13,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+
+import org.hibernate.sql.ordering.antlr.Factory;
 
 
 public class Launcher extends Application {
@@ -29,9 +32,12 @@ public class Launcher extends Application {
 				Controller con = new Controller();
 				Platform.exit();
 				System.exit(0);
+				DbOps.factory.close();
 			
 			});
-
+			// set up connection to db
+			DbOps.getConnectionDb();
+						
 			//get root / outer pane
 			BorderPane outerPane = (BorderPane) loader.load();
 
@@ -41,11 +47,16 @@ public class Launcher extends Application {
 			dpc.associateController(c);
 			dpc.start();
 
+			
+			
 			//set up the scene
 			primaryStage.setScene(new Scene(outerPane));
 			primaryStage.setTitle("Snarex");
 			primaryStage.show();
 			
+
+						
+
 			
 		}
 		

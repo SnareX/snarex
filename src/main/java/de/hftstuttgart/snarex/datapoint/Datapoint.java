@@ -11,8 +11,9 @@ public class Datapoint {
 	private double temperature;
 	private double pressure;
 	private double revolutions;
-	private String sekunden;
+	private String uhrzeit;
 	private LocalDateTime date;
+	String recordName;
 
 	static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
@@ -24,15 +25,25 @@ public class Datapoint {
 		this.temperature = sEvent.getTemperature();
 		this.pressure = sEvent.getPressure();
 		this.revolutions = sEvent.getRevolutions();
-		this.sekunden = date.format(formatter);
+		this.uhrzeit = date.format(formatter);
+	}
+	
+	/* Constructor: saving into database */
+	public Datapoint(double temperature, double pressure, double revolutions, String recordName) {
+		this.date = LocalDateTime.now();
+		this.temperature = temperature;
+		this.pressure = pressure;
+		this.revolutions = revolutions;
+		this.recordName = recordName;
 	}
 
+	/* Constructor: saving into XYChart */
 	public Datapoint(double temperature, double pressure, double revolutions) {
 		this.temperature = temperature;
 		this.pressure = pressure;
 		this.revolutions = revolutions;
 		this.date = LocalDateTime.now();
-		this.sekunden = date.format(formatter);
+		this.uhrzeit = date.format(formatter);
 
 	}
 
@@ -53,11 +64,11 @@ public class Datapoint {
 	}
 
 	public String getSekunden() {
-		return sekunden;
+		return uhrzeit;
 	}
 
 	public void setSekunden(String sekunden) {
-		this.sekunden = sekunden;
+		this.uhrzeit = sekunden;
 	}
 
 	public double getPressure() {
@@ -84,4 +95,14 @@ public class Datapoint {
 	public void setTemperature(double temperature) {
 		this.temperature = temperature;
 	}
+
+	public String getRecordName() {
+		return recordName;
+	}
+
+	public void setRecordName(String recordName) {
+		this.recordName = recordName;
+	}
+	
+	
 }

@@ -1,5 +1,6 @@
 package de.hftstuttgart.snarex.model;
 
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -16,7 +17,12 @@ public class Model {
      * Vector containing all Sensor Objects
      */
     public static Vector<Sensor> sensorVector = new Vector<>();
+
+    //queue for multithreaded chart updates
     public static BlockingQueue<Datapoint> dpQueue = new LinkedBlockingDeque<Datapoint>();
+
+    //list for saving datapoints to the database. no multithreading required
+    public static ArrayList<Datapoint> dpList = new ArrayList<>();
 
 	/**
 	 * adds a new Sensor to sensorVector;
@@ -51,18 +57,8 @@ public class Model {
 		Model model1 = new Model();
 		model1.addSensor();
 
-        /*DpConsumer dpc = new DpConsumer();
-        dpc.associateController();*/
-
-        /*try{
-            dpc.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
 		System.out.println("connecting to sensor...");
 		model1.connectToSensor(0);
-
-        // model1.closeSensorConnection(0)
 
 	}
 
