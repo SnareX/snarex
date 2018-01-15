@@ -24,6 +24,9 @@ public class Model {
     //list for saving datapoints to the database. no multithreading required
     public static ArrayList<Datapoint> dpList = new ArrayList<>();
 
+    //specifies whether to save to dpList for database operations or not
+    public static boolean saving=false;
+    
 	/**
 	 * adds a new Sensor to sensorVector;
 	 */

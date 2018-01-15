@@ -7,10 +7,14 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Scanner;
 
+import de.hftstuttgart.snarex.datapoint.Datapoint;
+import de.hftstuttgart.snarex.datapoint.DpConsumer;
+import de.hftstuttgart.snarex.dbops.DbOps;
 import de.hftstuttgart.snarex.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
@@ -26,7 +30,7 @@ public class Controller {
 
 	@FXML
 	private Label sensorSelectionLbl;
-
+	
 	@FXML
 	private Label dataBaseLbl;
 
@@ -311,7 +315,7 @@ public class Controller {
 	@FXML
 	void startRecordClick(ActionEvent event) {
 		// start reading data from cebarround and save into arraylist as cache
-
+		Model.saving = true;
 	}
 
 	@FXML
@@ -327,19 +331,22 @@ public class Controller {
 		// stop reading data from cebarround and ask for record name
 		// start saving from arraylist into database with value recordName
 		
-//		window pop up (" do you want to save your record?")		
+		Model.saving = false;
+		
+//		window pop up (" do you want to save your record?")
 //		if(speichern) {
 //		
 //		Scanner scanner = new Scanner(System.in);
 //		
 //		open window
 //		String recordName = scanner.nextLine();
-//		
-//		}
-//		
-//		else {
-//			clear arraylist
-//		}
+		 for(Datapoint dtp : Model.dpList ) {
+			DbOps.saveData(dtp," ");
+		 }
+		
+//     }else	
+		Model.dpList.clear();
+//	   }
 	}
 
 	@FXML

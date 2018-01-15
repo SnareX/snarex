@@ -28,7 +28,10 @@ public class Sensor {
 			@Override
 			public void sensorDataEventListener(SensorEvent sEvent) {
 				Datapoint dp = new Datapoint(sEvent);
-
+				
+				if(Model.saving) {
+					Model.dpList.add(dp);
+				}
 				synchronized (Model.dpQueue) {
 					if (!Model.dpQueue.offer(dp)) {
 						Model.dpQueue.offer(dp);

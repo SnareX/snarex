@@ -32,7 +32,7 @@ public class DpConsumer extends Thread {
 					if (Model.dpQueue.isEmpty()) {
 						Model.dpQueue.wait();
 					}
-
+					
 					Datapoint dp = Model.dpQueue.take();
 					graphPlotter(dp);
 				}
@@ -64,7 +64,7 @@ public class DpConsumer extends Thread {
 
 			// Sys Out to prove this stuff is working
 			System.out.println(datapoint.getSekunden() + "  " + Double.toString(datapoint.getPressure()));
-
+			
 			// add new data from datapoint to series objects
 			series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
 			series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));

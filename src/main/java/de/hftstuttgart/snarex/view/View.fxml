@@ -223,7 +223,7 @@
 		</VBox>
 	</center>
 	<bottom>
-		<TextArea prefHeight="140.0" prefWidth="1105.0"
+		<TextArea fx:id="textArea" prefHeight="140.0" prefWidth="1105.0"
 			BorderPane.alignment="CENTER" />
 	</bottom>
 	<top>
