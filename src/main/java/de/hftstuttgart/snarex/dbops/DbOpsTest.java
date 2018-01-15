@@ -16,7 +16,7 @@ public class DbOpsTest {
 //			DbOps.saveData(dtp,"Adrian");
 			
 			// delete data
-			DbOps.deleteData("Adrian");
+			//DbOps.deleteData("Adrian");
 			
 			//read from database
 			List<Datapoint> datapoints = DbOps.getData("Adrian");
