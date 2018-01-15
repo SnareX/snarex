@@ -46,7 +46,7 @@ public class DbOps {
 	public static void deleteData(String recordName) {
 		Session session = factory.openSession();
 		session.beginTransaction();
-		session.createQuery("delete from Datapoint where recordName ="+recordName).executeUpdate();
+		session.createQuery("delete from Datapoint where recordName = '"+recordName+"'").executeUpdate();
 		session.getTransaction().commit();
 		System.out.println("Successfully deleted");
 		session.close();
