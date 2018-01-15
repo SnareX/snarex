@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 import de.hftstuttgart.snarex.controller.Controller;
 import de.hftstuttgart.snarex.datapoint.Datapoint;
 import de.hftstuttgart.snarex.model.Model;
+import java.util.concurrent.TimeUnit;
 
 import static de.hftstuttgart.snarex.model.Model.dpQueue;
 
@@ -61,6 +62,18 @@ public class DbOps {
 		session.close();
 		return datapoints;
 	}	
+	
+	public void intervalPush(List<Datapoint> datapoints){
+		try{
+			for(Datapoint dtp : datapoints) {
+		
+				pushToDpQueue(dtp);
+				TimeUnit.SECONDS.sleep(1);
+			}
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+			}
+	}
 	
     void pushToDpQueue(Datapoint dp){
 
