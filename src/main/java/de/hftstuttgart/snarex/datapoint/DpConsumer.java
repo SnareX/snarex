@@ -1,5 +1,6 @@
 package de.hftstuttgart.snarex.datapoint;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 
 import de.hftstuttgart.snarex.controller.Controller;
@@ -17,7 +18,7 @@ import javafx.scene.chart.XYChart;
 public class DpConsumer extends Thread {
 
 	private Controller controller;
-
+	static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 	public DpConsumer() {
 		System.out.println("dpc created");
 
@@ -63,12 +64,12 @@ public class DpConsumer extends Thread {
 		if (series.getData().size() == 0) {
 
 			// Sys Out to prove this stuff is working
-			System.out.println(datapoint.getSekunden() + "  " + Double.toString(datapoint.getPressure()));
+			System.out.println(datapoint.getDate() + "  " + Double.toString(datapoint.getPressure()));
 			
 			// add new data from datapoint to series objects
-			series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
-			series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));
-			series_2.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
+			series.getData().add(new XYChart.Data<String, Double>(datapoint.getDate().format(formatter), datapoint.getTemperature()));
+			series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getDate().format(formatter), datapoint.getPressure()));
+			series_2.getData().add(new XYChart.Data<String, Double>(datapoint.getDate().format(formatter), datapoint.getRevolutions()));
 
 			// passes modification in UI to JavaFX Thread
 			Platform.runLater(new Runnable() {
@@ -96,9 +97,9 @@ public class DpConsumer extends Thread {
 			if (series.getData().size() < 30) {
 
 				// add new data from datapoint to series objects
-				series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
-				series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));
-				series_2.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
+				series.getData().add(new XYChart.Data<String, Double>(datapoint.getDate().format(formatter), datapoint.getTemperature()));
+				series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getDate().format(formatter), datapoint.getPressure()));
+				series_2.getData().add(new XYChart.Data<String, Double>(datapoint.getDate().format(formatter), datapoint.getRevolutions()));
 			}
 
 			// a measurment gets added while the first measurment gets deleted, so the graph
@@ -106,9 +107,9 @@ public class DpConsumer extends Thread {
 
 			else {
 
-				series.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getTemperature()));
-				series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getPressure()));
-				series_2.getData().add(new XYChart.Data<String, Double>(datapoint.getSekunden(), datapoint.getRevolutions()));
+				series.getData().add(new XYChart.Data<String, Double>(datapoint.getDate().format(formatter), datapoint.getTemperature()));
+				series_1.getData().add(new XYChart.Data<String, Double>(datapoint.getDate().format(formatter), datapoint.getPressure()));
+				series_2.getData().add(new XYChart.Data<String, Double>(datapoint.getDate().format(formatter), datapoint.getRevolutions()));
 
 				series.getData().remove(0);
 				series_1.getData().remove(0);

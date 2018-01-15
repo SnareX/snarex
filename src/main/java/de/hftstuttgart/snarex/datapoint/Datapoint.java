@@ -103,6 +103,14 @@ public class Datapoint {
 	public void setRecordName(String recordName) {
 		this.recordName = recordName;
 	}
+
+	public String getUhrzeit() {
+		return uhrzeit;
+	}
+
+	public void setUhrzeit(String uhrzeit) {
+		this.uhrzeit = uhrzeit;
+	}
 	
 	
 }
