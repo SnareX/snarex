@@ -3,7 +3,7 @@
 "-//Hibernate/Hibernate Mapping DTD//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="de.hftstuttgart.snarex.datapoint.Datapoint" table="DATAPOINTS">
+	<class name="de.hftstuttgart.snarex.datapoint.Datapoint" table="TEST">
 		<id name="id" type="int">
 			<column name="id" />
 			<generator class="identity" />
@@ -22,7 +22,7 @@
 			<column name="revolutions" />
 		</property>
 		<property name="recordName" type="string">
-			<column name="redcordName"	/>	
+			<column name="recordName"	/>	
 		</property>
 			
 	</class>

@@ -34,7 +34,9 @@ public class Launcher extends Application {
 				DbOps.factory.close();
 			
 			});
-
+			// set up connection to db
+			DbOps.getConnectionDb();
+						
 			//get root / outer pane
 			BorderPane outerPane = (BorderPane) loader.load();
 
@@ -44,15 +46,15 @@ public class Launcher extends Application {
 			dpc.associateController(c);
 			dpc.start();
 
-			// set up connection to db
-			DbOps.getConnectionDb();
-						
+			
+			
 			//set up the scene
 			primaryStage.setScene(new Scene(outerPane));
 			primaryStage.setTitle("Snarex");
 			primaryStage.show();
 			
-			
+
+						
 
 			
 		}

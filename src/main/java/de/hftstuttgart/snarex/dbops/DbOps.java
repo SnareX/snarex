@@ -56,7 +56,7 @@ public class DbOps {
 	public static List<Datapoint> getData(String recordName){
 		List <Datapoint> datapoints;
 		Session session = factory.openSession();
-		datapoints = session.createQuery("From Datapoint where recordName ="+recordName).list();
+		datapoints = session.createQuery("From Datapoint where recordName = '"+recordName+"'").list();
 		session.close();
 		return datapoints;
 	}
