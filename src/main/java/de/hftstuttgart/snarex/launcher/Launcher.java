@@ -46,7 +46,7 @@ public class Launcher extends Application {
 			DpConsumer dpc = new DpConsumer();
 			dpc.associateController(c);
 			dpc.start();
-
+			
 			
 			
 			//set up the scene

@@ -5,6 +5,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import de.hftstuttgart.snarex.controller.Controller;
 import de.hftstuttgart.snarex.datapoint.Datapoint;
 import de.hftstuttgart.snarex.model.Model;
 
@@ -13,7 +15,6 @@ import static de.hftstuttgart.snarex.model.Model.dpQueue;
 import java.util.List;
 
 public class DbOps {
-	
 
 	public static SessionFactory factory;
 	
@@ -59,8 +60,7 @@ public class DbOps {
 		datapoints = session.createQuery("From Datapoint where recordName = '"+recordName+"'").list();
 		session.close();
 		return datapoints;
-	}
-	
+	}	
 	
     void pushToDpQueue(Datapoint dp){
 

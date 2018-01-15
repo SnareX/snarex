@@ -10,7 +10,9 @@ import java.util.Scanner;
 import de.hftstuttgart.snarex.datapoint.Datapoint;
 import de.hftstuttgart.snarex.datapoint.DpConsumer;
 import de.hftstuttgart.snarex.dbops.DbOps;
+import de.hftstuttgart.snarex.dbops.DbOpsTest;
 import de.hftstuttgart.snarex.model.Model;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
@@ -18,6 +20,13 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
+import javafx.scene.Parent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -25,6 +34,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.control.TextField;
 
 public class Controller {
 
@@ -70,6 +80,12 @@ public class Controller {
 	@FXML
 	private ComboBox<?> inputInComboBox;
 
+	@FXML
+	private Button yes;
+	
+	@FXML
+	private Button no;
+	
 	@FXML
 	private Button startMeasuringBtn;
 
@@ -230,6 +246,9 @@ public class Controller {
 
 	@FXML
 	private TreeItem<?> revyAlTree;
+	
+	@FXML
+	private TextField userInput;
 
 	@FXML
 	void startMeasureClick(ActionEvent event) {
@@ -243,6 +262,26 @@ public class Controller {
 	@FXML
 	void compareClick(ActionEvent event) {
 
+	}
+	
+	@FXML
+	void yesClicked(ActionEvent event) {
+		String recordName = userInput.getText();
+		
+		for (Datapoint dtp : Model.dpList) {
+			DbOps.saveData(dtp,recordName);
+		}
+		
+		Stage stage = (Stage) yes.getScene().getWindow();
+		stage.close();
+	}
+	
+	@FXML
+	void noClicked(ActionEvent event) {
+		Model.dpList.clear();
+		
+		Stage stage = (Stage) no.getScene().getWindow();
+		stage.close();
 	}
 
 	@FXML
@@ -316,6 +355,7 @@ public class Controller {
 	void startRecordClick(ActionEvent event) {
 		// start reading data from cebarround and save into arraylist as cache
 		Model.saving = true;
+		System.out.println("start button clicked");
 	}
 
 	@FXML
@@ -324,29 +364,33 @@ public class Controller {
 		Model.closeSensorConnection(0);
 
 	}
-
+	Stage secondaryStage = new Stage();
+	
 	@FXML
-	void stopRecordClick(ActionEvent event) {
+	void stopRecordClick(ActionEvent event) throws IOException {
 
-		// stop reading data from cebarround and ask for record name
+		
 		// start saving from arraylist into database with value recordName
 		
+		// stop saving into ArrayList
 		Model.saving = false;
 		
-//		window pop up (" do you want to save your record?")
-//		if(speichern) {
-//		
-//		Scanner scanner = new Scanner(System.in);
-//		
-//		open window
-//		String recordName = scanner.nextLine();
-		 for(Datapoint dtp : Model.dpList ) {
-			DbOps.saveData(dtp," ");
-		 }
+		System.out.println("stop button clicked");
+	
+		//show popup
+		URL location = Controller.class.getResource("/de/hftstuttgart/snarex/view/PopUp.fxml"); //beginning with slash to imply from project root
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(location);
+			
 		
-//     }else	
-		Model.dpList.clear();
-//	   }
+		
+		//get root / outer pane
+		Pane outerPane = (Pane) loader.load();
+		
+		//set up the scene
+		secondaryStage.setScene(new Scene(outerPane));
+		secondaryStage.setTitle("Snarex");
+		secondaryStage.show();		
 	}
 
 	@FXML
