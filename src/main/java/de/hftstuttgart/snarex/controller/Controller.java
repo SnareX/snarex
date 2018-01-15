@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.List;
 import java.util.Scanner;
 
 import de.hftstuttgart.snarex.datapoint.Datapoint;
@@ -38,9 +39,21 @@ import javafx.scene.control.TextField;
 
 public class Controller {
 
+	Stage secondaryStage = new Stage();
+	Stage loadingStage = new Stage();
+	
+	@FXML
+	private TextField LoadingInput;
+	
+	@FXML
+	private Button loadLoading;
+	
+	@FXML
+	private Button closeLoading;
+	
 	@FXML
 	private Label sensorSelectionLbl;
-	
+
 	@FXML
 	private Label dataBaseLbl;
 
@@ -82,10 +95,10 @@ public class Controller {
 
 	@FXML
 	private Button yes;
-	
+
 	@FXML
 	private Button no;
-	
+
 	@FXML
 	private Button startMeasuringBtn;
 
@@ -142,25 +155,24 @@ public class Controller {
 
 	@FXML
 	private Menu deleteDataItem;
-	
+
 	@FXML
 	private Menu setVisibleMenu;
-	
+
 	@FXML
 	private Menu setInvisibleMenu;
-	
+
 	@FXML
 	private MenuItem setInvisibleMenuItem;
-	
+
 	@FXML
 	private MenuItem setVisibleMenuItem;
-	
+
 	@FXML
 	private MenuItem openDataSubItem;
-	
+
 	@FXML
 	private MenuItem deleteDataSubItem;
-
 
 	@FXML
 	private MenuItem sensorAdd;
@@ -246,9 +258,23 @@ public class Controller {
 
 	@FXML
 	private TreeItem<?> revyAlTree;
-	
+
 	@FXML
 	private TextField userInput;
+	
+	@FXML
+	void loadClicked(ActionEvent event) {
+		String recName = LoadingInput.getText();
+		List <Datapoint> loadedPoints = DbOps.getData(recName);
+		DbOps ops = new DbOps();
+		ops.intervalPush(loadedPoints);
+	}
+	
+	@FXML
+	void closeClicked(ActionEvent event) {
+		Stage stage = (Stage) closeLoading.getScene().getWindow();
+		stage.close();
+	}
 
 	@FXML
 	void startMeasureClick(ActionEvent event) {
@@ -263,23 +289,23 @@ public class Controller {
 	void compareClick(ActionEvent event) {
 
 	}
-	
+
 	@FXML
 	void yesClicked(ActionEvent event) {
 		String recordName = userInput.getText();
-		
+
 		for (Datapoint dtp : Model.dpList) {
-			DbOps.saveData(dtp,recordName);
+			DbOps.saveData(dtp, recordName);
 		}
-		
+
 		Stage stage = (Stage) yes.getScene().getWindow();
 		stage.close();
 	}
-	
+
 	@FXML
 	void noClicked(ActionEvent event) {
 		Model.dpList.clear();
-		
+
 		Stage stage = (Stage) no.getScene().getWindow();
 		stage.close();
 	}
@@ -299,28 +325,41 @@ public class Controller {
 
 	@FXML
 	void setVisibleMenuItemClicked(ActionEvent event) {
-		
+
 		treeTree.setVisible(true);
-		
+
 	}
-	
+
 	@FXML
 	void setInvisibleMenuItemClicked(ActionEvent event) {
-		
+
 		treeTree.setVisible(false);
-		
+
 	}
-	
+
 	@FXML
-	void openDataSubItemClicked(ActionEvent event) {
-		//Method to load data from database
+	void openDataSubItemClicked(ActionEvent event) throws IOException {
+		// show popup
+		URL location = Controller.class.getResource("/de/hftstuttgart/snarex/view/LoadingPopUp.fxml"); // beginning with slash
+																								// to imply from project
+																								// root
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(location);
+
+		// get root / outer pane
+		Pane outerPane = (Pane) loader.load();
+
+		// set up the scene
+		loadingStage.setScene(new Scene(outerPane));
+		loadingStage.setTitle("Snarex");
+		loadingStage.show();
 	}
 
 	@FXML
 	void deleteDataSubItemClicked(ActionEvent event) {
-		//Method to delete data from database
+		// Method to delete data from database
 	}
-	
+
 	@FXML
 	void selectBarTypeSelect(ActionEvent event) {
 
@@ -364,33 +403,32 @@ public class Controller {
 		Model.closeSensorConnection(0);
 
 	}
-	Stage secondaryStage = new Stage();
-	
+
+
 	@FXML
 	void stopRecordClick(ActionEvent event) throws IOException {
 
-		
 		// start saving from arraylist into database with value recordName
-		
+
 		// stop saving into ArrayList
 		Model.saving = false;
-		
+
 		System.out.println("stop button clicked");
-	
-		//show popup
-		URL location = Controller.class.getResource("/de/hftstuttgart/snarex/view/PopUp.fxml"); //beginning with slash to imply from project root
+
+		// show popup
+		URL location = Controller.class.getResource("/de/hftstuttgart/snarex/view/PopUp.fxml"); // beginning with slash
+																								// to imply from project
+																								// root
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(location);
-			
-		
-		
-		//get root / outer pane
+
+		// get root / outer pane
 		Pane outerPane = (Pane) loader.load();
-		
-		//set up the scene
+
+		// set up the scene
 		secondaryStage.setScene(new Scene(outerPane));
 		secondaryStage.setTitle("Snarex");
-		secondaryStage.show();		
+		secondaryStage.show();
 	}
 
 	@FXML
